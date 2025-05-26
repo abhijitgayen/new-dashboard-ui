@@ -4,7 +4,7 @@ import { X, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { useTheme, ColorMode, ContentLayout, FontFamily } from '@/contexts/ThemeContext';
+import { useTheme, ColorMode, ContentLayout, FontFamily, Scale, Radius, SidebarMode } from '@/contexts/ThemeContext';
 
 interface ThemePanelProps {
   isOpen: boolean;
@@ -59,14 +59,15 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
             <Label className="text-sm font-medium mb-3 block">Scale:</Label>
             <div className="flex gap-2">
               {[
-                { label: '○', value: 'sm' },
-                { label: 'XS', value: 'xs' },
-                { label: 'LG', value: 'lg' }
+                { label: '○', value: 'sm' as Scale },
+                { label: 'XS', value: 'xs' as Scale },
+                { label: 'LG', value: 'lg' as Scale }
               ].map((scale) => (
                 <Button
                   key={scale.value}
-                  variant="outline"
+                  variant={settings.scale === scale.value ? 'default' : 'outline'}
                   size="sm"
+                  onClick={() => updateSettings({ scale: scale.value })}
                   className="px-3"
                 >
                   {scale.label}
@@ -80,16 +81,17 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
             <Label className="text-sm font-medium mb-3 block">Radius:</Label>
             <div className="flex gap-2">
               {[
-                { label: '○', value: 'none' },
-                { label: 'SM', value: 'sm' },
-                { label: 'MD', value: 'md' },
-                { label: 'LG', value: 'lg' },
-                { label: 'XL', value: 'xl' }
+                { label: '○', value: 'none' as Radius },
+                { label: 'SM', value: 'sm' as Radius },
+                { label: 'MD', value: 'md' as Radius },
+                { label: 'LG', value: 'lg' as Radius },
+                { label: 'XL', value: 'xl' as Radius }
               ].map((radius) => (
                 <Button
                   key={radius.value}
-                  variant={radius.value === 'md' ? 'default' : 'outline'}
+                  variant={settings.radius === radius.value ? 'default' : 'outline'}
                   size="sm"
+                  onClick={() => updateSettings({ radius: radius.value })}
                   className="px-3"
                 >
                   {radius.label}
@@ -140,6 +142,29 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                 className="flex-1"
               >
                 Centered
+              </Button>
+            </div>
+          </div>
+
+          {/* Sidebar Mode */}
+          <div className="mb-6">
+            <Label className="text-sm font-medium mb-3 block">Sidebar mode:</Label>
+            <div className="flex gap-2">
+              <Button
+                variant={settings.sidebarMode === 'default' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => updateSettings({ sidebarMode: 'default' as SidebarMode })}
+                className="flex-1"
+              >
+                Default
+              </Button>
+              <Button
+                variant={settings.sidebarMode === 'icon' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => updateSettings({ sidebarMode: 'icon' as SidebarMode })}
+                className="flex-1"
+              >
+                Icon
               </Button>
             </div>
           </div>

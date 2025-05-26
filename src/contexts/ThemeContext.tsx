@@ -4,12 +4,18 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 export type ColorMode = 'light' | 'dark';
 export type ContentLayout = 'full' | 'centered';
 export type FontFamily = 'sans' | 'mono' | 'display';
+export type Scale = 'sm' | 'xs' | 'lg';
+export type Radius = 'none' | 'sm' | 'md' | 'lg' | 'xl';
+export type SidebarMode = 'default' | 'icon';
 
 interface ThemeSettings {
   colorMode: ColorMode;
   contentLayout: ContentLayout;
   fontFamily: FontFamily;
   accentColor: string;
+  scale: Scale;
+  radius: Radius;
+  sidebarMode: SidebarMode;
 }
 
 interface ThemeContextType {
@@ -22,7 +28,10 @@ const defaultSettings: ThemeSettings = {
   colorMode: 'dark',
   contentLayout: 'full',
   fontFamily: 'sans',
-  accentColor: '#10b981'
+  accentColor: '#10b981',
+  scale: 'sm',
+  radius: 'md',
+  sidebarMode: 'default'
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -63,6 +72,28 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       mono: 'JetBrains Mono, monospace',
       display: 'Cal Sans, system-ui, sans-serif'
     }[settings.fontFamily]);
+
+    // Apply scale
+    const scaleValues = {
+      xs: '0.8',
+      sm: '0.9',
+      lg: '1.1'
+    };
+    root.style.setProperty('--scale', scaleValues[settings.scale]);
+    root.style.transform = `scale(${scaleValues[settings.scale]})`;
+
+    // Apply radius
+    const radiusValues = {
+      none: '0px',
+      sm: '0.25rem',
+      md: '0.5rem',
+      lg: '0.75rem',
+      xl: '1rem'
+    };
+    root.style.setProperty('--radius', radiusValues[settings.radius]);
+
+    // Apply accent color
+    root.style.setProperty('--accent-color', settings.accentColor);
 
   }, [settings]);
 

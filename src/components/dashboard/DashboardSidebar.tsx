@@ -21,14 +21,15 @@ import {
   Settings
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useTheme } from '@/contexts/ThemeContext';
+import { SidebarMode } from '@/contexts/ThemeContext';
 
 interface SidebarProps {
   onThemeToggle: () => void;
+  sidebarMode: SidebarMode;
 }
 
-const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle }) => {
-  const { settings } = useTheme();
+const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle, sidebarMode }) => {
+  const isIconMode = sidebarMode === 'icon';
 
   const menuItems = [
     { icon: BarChart3, label: 'Website Analytics', active: true },
@@ -52,14 +53,14 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle }) => {
   ];
 
   return (
-    <div className="w-64 h-screen bg-background border-r border-border flex flex-col">
+    <div className={`${isIconMode ? 'w-16' : 'w-64'} h-screen bg-background border-r border-border flex flex-col transition-all duration-300`}>
       {/* Header */}
       <div className="p-6 border-b border-border">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center">
             <BarChart3 className="w-5 h-5 text-white" />
           </div>
-          <span className="font-semibold text-foreground">Shadcn UI Kit</span>
+          {!isIconMode && <span className="font-semibold text-foreground">Shadcn UI Kit</span>}
         </div>
       </div>
 
@@ -67,24 +68,27 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle }) => {
       <div className="flex-1 overflow-y-auto px-4 py-6">
         {/* Dashboards Section */}
         <div className="mb-8">
-          <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-2">
-            Dashboards
-          </h3>
+          {!isIconMode && (
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-2">
+              Dashboards
+            </h3>
+          )}
           <div className="space-y-1">
             {menuItems.map((item, index) => (
               <div
                 key={index}
-                className={`flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors ${
+                className={`flex items-center ${isIconMode ? 'justify-center' : 'justify-between'} px-3 py-2 rounded-lg cursor-pointer transition-colors ${
                   item.active 
                     ? 'bg-accent text-accent-foreground' 
                     : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
                 }`}
+                title={isIconMode ? item.label : undefined}
               >
-                <div className="flex items-center gap-3">
+                <div className={`flex items-center ${isIconMode ? '' : 'gap-3'}`}>
                   <item.icon className="w-4 h-4" />
-                  <span className="text-sm font-medium">{item.label}</span>
+                  {!isIconMode && <span className="text-sm font-medium">{item.label}</span>}
                 </div>
-                {item.badge && (
+                {!isIconMode && item.badge && (
                   <span className="text-xs px-2 py-1 bg-orange-500 text-white rounded-full">
                     {item.badge}
                   </span>
@@ -96,20 +100,23 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle }) => {
 
         {/* Apps Section */}
         <div className="mb-8">
-          <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-2">
-            Apps
-          </h3>
+          {!isIconMode && (
+            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-2">
+              Apps
+            </h3>
+          )}
           <div className="space-y-1">
             {appItems.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                className={`flex items-center ${isIconMode ? 'justify-center' : 'justify-between'} px-3 py-2 rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}
+                title={isIconMode ? item.label : undefined}
               >
-                <div className="flex items-center gap-3">
+                <div className={`flex items-center ${isIconMode ? '' : 'gap-3'}`}>
                   <item.icon className="w-4 h-4" />
-                  <span className="text-sm font-medium">{item.label}</span>
+                  {!isIconMode && <span className="text-sm font-medium">{item.label}</span>}
                 </div>
-                {item.badge && (
+                {!isIconMode && item.badge && (
                   <span className={`text-xs px-2 py-1 rounded-full ${
                     item.badge === 'New' ? 'bg-emerald-500 text-white' :
                     item.badge === 'Coming' ? 'bg-muted text-muted-foreground' :
@@ -126,27 +133,30 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle }) => {
 
       {/* Footer */}
       <div className="p-4 border-t border-border">
-        <div className="bg-muted rounded-lg p-4 mb-4">
-          <div className="flex items-center gap-2 mb-2">
-            <Crown className="w-4 h-4 text-yellow-500" />
-            <span className="text-sm font-medium">Upgrade to Pro</span>
+        {!isIconMode && (
+          <div className="bg-muted rounded-lg p-4 mb-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Crown className="w-4 h-4 text-yellow-500" />
+              <span className="text-sm font-medium">Upgrade to Pro</span>
+            </div>
+            <p className="text-xs text-muted-foreground mb-3">
+              Get pro now to own all dashboards, templates and components for life.
+            </p>
+            <Button size="sm" className="w-full">
+              Get Shadcn UI Kit
+            </Button>
           </div>
-          <p className="text-xs text-muted-foreground mb-3">
-            Get pro now to own all dashboards, templates and components for life.
-          </p>
-          <Button size="sm" className="w-full">
-            Get Shadcn UI Kit
-          </Button>
-        </div>
+        )}
         
         <Button
           variant="outline"
           size="sm"
           onClick={onThemeToggle}
           className="w-full"
+          title={isIconMode ? "Theme Settings" : undefined}
         >
           <Palette className="w-4 h-4 mr-2" />
-          Theme Settings
+          {!isIconMode && "Theme Settings"}
         </Button>
       </div>
     </div>
