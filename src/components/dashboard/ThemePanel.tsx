@@ -27,12 +27,12 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-end">
-      <div className="w-80 h-full bg-background border-l border-border overflow-y-auto">
+      <div className="w-80 h-full glass-effect border-l border-border/50 overflow-y-auto modern-card">
         <div className="p-6">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-semibold">Theme preset:</h2>
-            <Button variant="ghost" size="icon" onClick={onClose}>
+          {/* Header with accent styling */}
+          <div className="flex items-center justify-between mb-6 pb-4 border-b border-border/50">
+            <h2 className="text-lg font-semibold accent-text">Theme preset:</h2>
+            <Button variant="ghost" size="icon" onClick={onClose} className="hover-accent">
               <X className="w-4 h-4" />
             </Button>
           </div>
@@ -44,11 +44,20 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                 variant={settings.colorMode === 'light' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ colorMode: 'light' as ColorMode })}
-                className="flex-1"
+                className="flex-1 modern-button"
+                style={{
+                  backgroundColor: settings.colorMode === 'light' ? 'var(--accent-color)' : undefined,
+                  borderColor: 'var(--accent-color)'
+                } as React.CSSProperties}
               >
                 Default
               </Button>
-              <Button variant="outline" size="sm" className="flex-1">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="flex-1 hover-accent"
+                style={{ borderColor: 'var(--accent-color)' } as React.CSSProperties}
+              >
                 New York
               </Button>
             </div>
@@ -56,7 +65,7 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
 
           {/* Scale */}
           <div className="mb-6">
-            <Label className="text-sm font-medium mb-3 block">Scale:</Label>
+            <Label className="text-sm font-medium mb-3 block accent-text">Scale:</Label>
             <div className="flex gap-2">
               {[
                 { label: '○', value: 'sm' as Scale },
@@ -68,7 +77,11 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                   variant={settings.scale === scale.value ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => updateSettings({ scale: scale.value })}
-                  className="px-3"
+                  className="px-3 hover-accent"
+                  style={{
+                    backgroundColor: settings.scale === scale.value ? 'var(--accent-color)' : undefined,
+                    borderColor: 'var(--accent-color)'
+                  } as React.CSSProperties}
                 >
                   {scale.label}
                 </Button>
@@ -78,7 +91,7 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
 
           {/* Radius */}
           <div className="mb-6">
-            <Label className="text-sm font-medium mb-3 block">Radius:</Label>
+            <Label className="text-sm font-medium mb-3 block accent-text">Radius:</Label>
             <div className="flex gap-2">
               {[
                 { label: '○', value: 'none' as Radius },
@@ -92,7 +105,11 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                   variant={settings.radius === radius.value ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => updateSettings({ radius: radius.value })}
-                  className="px-3"
+                  className="px-3 hover-accent"
+                  style={{
+                    backgroundColor: settings.radius === radius.value ? 'var(--accent-color)' : undefined,
+                    borderColor: 'var(--accent-color)'
+                  } as React.CSSProperties}
                 >
                   {radius.label}
                 </Button>
@@ -102,13 +119,17 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
 
           {/* Color Mode */}
           <div className="mb-6">
-            <Label className="text-sm font-medium mb-3 block">Color mode:</Label>
+            <Label className="text-sm font-medium mb-3 block accent-text">Color mode:</Label>
             <div className="flex gap-2">
               <Button
                 variant={settings.colorMode === 'light' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ colorMode: 'light' as ColorMode })}
-                className="flex-1"
+                className="flex-1 hover-accent"
+                style={{
+                  backgroundColor: settings.colorMode === 'light' ? 'var(--accent-color)' : undefined,
+                  borderColor: 'var(--accent-color)'
+                } as React.CSSProperties}
               >
                 Light
               </Button>
@@ -116,7 +137,11 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                 variant={settings.colorMode === 'dark' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ colorMode: 'dark' as ColorMode })}
-                className="flex-1"
+                className="flex-1 hover-accent"
+                style={{
+                  backgroundColor: settings.colorMode === 'dark' ? 'var(--accent-color)' : undefined,
+                  borderColor: 'var(--accent-color)'
+                } as React.CSSProperties}
               >
                 Dark
               </Button>
@@ -125,13 +150,17 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
 
           {/* Content Layout */}
           <div className="mb-6">
-            <Label className="text-sm font-medium mb-3 block">Content layout:</Label>
+            <Label className="text-sm font-medium mb-3 block accent-text">Content layout:</Label>
             <div className="flex gap-2">
               <Button
                 variant={settings.contentLayout === 'full' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ contentLayout: 'full' as ContentLayout })}
-                className="flex-1"
+                className="flex-1 hover-accent"
+                style={{
+                  backgroundColor: settings.contentLayout === 'full' ? 'var(--accent-color)' : undefined,
+                  borderColor: 'var(--accent-color)'
+                } as React.CSSProperties}
               >
                 Full
               </Button>
@@ -139,7 +168,11 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                 variant={settings.contentLayout === 'centered' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ contentLayout: 'centered' as ContentLayout })}
-                className="flex-1"
+                className="flex-1 hover-accent"
+                style={{
+                  backgroundColor: settings.contentLayout === 'centered' ? 'var(--accent-color)' : undefined,
+                  borderColor: 'var(--accent-color)'
+                } as React.CSSProperties}
               >
                 Centered
               </Button>
@@ -148,13 +181,17 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
 
           {/* Sidebar Mode */}
           <div className="mb-6">
-            <Label className="text-sm font-medium mb-3 block">Sidebar mode:</Label>
+            <Label className="text-sm font-medium mb-3 block accent-text">Sidebar mode:</Label>
             <div className="flex gap-2">
               <Button
                 variant={settings.sidebarMode === 'default' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ sidebarMode: 'default' as SidebarMode })}
-                className="flex-1"
+                className="flex-1 hover-accent"
+                style={{
+                  backgroundColor: settings.sidebarMode === 'default' ? 'var(--accent-color)' : undefined,
+                  borderColor: 'var(--accent-color)'
+                } as React.CSSProperties}
               >
                 Default
               </Button>
@@ -162,7 +199,11 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                 variant={settings.sidebarMode === 'icon' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ sidebarMode: 'icon' as SidebarMode })}
-                className="flex-1"
+                className="flex-1 hover-accent"
+                style={{
+                  backgroundColor: settings.sidebarMode === 'icon' ? 'var(--accent-color)' : undefined,
+                  borderColor: 'var(--accent-color)'
+                } as React.CSSProperties}
               >
                 Icon
               </Button>
@@ -171,7 +212,7 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
 
           {/* Font Family */}
           <div className="mb-6">
-            <Label className="text-sm font-medium mb-3 block">Font:</Label>
+            <Label className="text-sm font-medium mb-3 block accent-text">Font:</Label>
             <div className="space-y-2">
               {[
                 { label: 'Inter', value: 'sans' as FontFamily },
@@ -183,7 +224,11 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                   variant={settings.fontFamily === font.value ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => updateSettings({ fontFamily: font.value })}
-                  className="w-full justify-start"
+                  className="w-full justify-start hover-accent"
+                  style={{
+                    backgroundColor: settings.fontFamily === font.value ? 'var(--accent-color)' : undefined,
+                    borderColor: 'var(--accent-color)'
+                  } as React.CSSProperties}
                 >
                   {font.label}
                 </Button>
@@ -191,18 +236,18 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Color Palette */}
+          {/* Color Palette with enhanced styling */}
           <div className="mb-6">
-            <Label className="text-sm font-medium mb-3 block">Colors:</Label>
+            <Label className="text-sm font-medium mb-3 block accent-text">Colors:</Label>
             <div className="grid grid-cols-3 gap-2">
               {colorOptions.map((color) => (
                 <button
                   key={color.value}
                   onClick={() => updateSettings({ accentColor: color.value })}
-                  className={`w-full h-10 rounded-lg border-2 transition-all ${
+                  className={`w-full h-10 rounded-lg border-2 transition-all duration-300 hover:scale-110 hover:shadow-lg ${
                     settings.accentColor === color.value 
-                      ? 'border-foreground scale-105' 
-                      : 'border-border hover:border-muted-foreground'
+                      ? 'border-foreground scale-105 accent-glow' 
+                      : 'border-border/50 hover:border-muted-foreground'
                   }`}
                   style={{ backgroundColor: color.value }}
                   title={color.name}
@@ -211,30 +256,41 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action Buttons with modern styling */}
           <div className="space-y-2">
-            <Button variant="outline" className="w-full" onClick={resetToDefault}>
+            <Button 
+              variant="outline" 
+              className="w-full hover-accent" 
+              onClick={resetToDefault}
+              style={{ borderColor: 'var(--accent-color)' } as React.CSSProperties}
+            >
               Reset to Default
             </Button>
-            <Button className="w-full">
+            <Button 
+              className="w-full modern-button"
+              style={{ backgroundColor: 'var(--accent-color)' } as React.CSSProperties}
+            >
               <Download className="w-4 h-4 mr-2" />
               Download
             </Button>
           </div>
 
-          {/* Status Cards */}
+          {/* Status Cards with accent styling */}
           <div className="mt-6 space-y-3">
             {[
-              { label: 'New Tickets', value: '40', color: 'bg-emerald-500' },
-              { label: 'Open Tickets', value: '25', color: 'bg-orange-500' },
-              { label: 'Response Time', value: '1 Day', color: 'bg-blue-500' }
-            ].map((item) => (
-              <Card key={item.label} className="p-3">
+              { label: 'New Tickets', value: '40', color: 'var(--accent-color)' },
+              { label: 'Open Tickets', value: '25', color: '#f59e0b' },
+              { label: 'Response Time', value: '1 Day', color: '#3b82f6' }
+            ].map((item, index) => (
+              <Card key={item.label} className="p-3 modern-card hover-accent">
                 <div className="flex items-center gap-3">
-                  <div className={`w-3 h-3 rounded-full ${item.color}`} />
+                  <div 
+                    className="w-3 h-3 rounded-full" 
+                    style={{ backgroundColor: index === 0 ? item.color : item.color }}
+                  />
                   <div className="flex-1">
                     <div className="text-sm text-muted-foreground">{item.label}</div>
-                    <div className="font-semibold">{item.value}</div>
+                    <div className="font-semibold accent-text">{item.value}</div>
                   </div>
                 </div>
               </Card>
