@@ -1,7 +1,6 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type ColorMode = 'light' | 'dark';
+export type ColorMode = 'light' | 'dark' | 'dark-blue';
 export type ContentLayout = 'full' | 'centered';
 export type FontFamily = 'sans' | 'mono' | 'display';
 export type Scale = 'sm' | 'xs' | 'lg';
@@ -88,8 +87,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Apply color mode
     if (settings.colorMode === 'dark') {
       root.classList.add('dark');
+      root.classList.remove('dark-blue');
+    } else if (settings.colorMode === 'dark-blue') {
+      root.classList.add('dark', 'dark-blue');
     } else {
-      root.classList.remove('dark');
+      root.classList.remove('dark', 'dark-blue');
     }
 
     // Apply font family

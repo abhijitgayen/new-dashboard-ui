@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { X, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -125,7 +124,7 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                 variant={settings.colorMode === 'light' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ colorMode: 'light' as ColorMode })}
-                className="flex-1 hover-accent"
+                className="flex-1 hover-accent text-xs"
                 style={{
                   backgroundColor: settings.colorMode === 'light' ? 'var(--accent-color)' : undefined,
                   borderColor: 'var(--accent-color)'
@@ -137,13 +136,25 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
                 variant={settings.colorMode === 'dark' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => updateSettings({ colorMode: 'dark' as ColorMode })}
-                className="flex-1 hover-accent"
+                className="flex-1 hover-accent text-xs"
                 style={{
                   backgroundColor: settings.colorMode === 'dark' ? 'var(--accent-color)' : undefined,
                   borderColor: 'var(--accent-color)'
                 } as React.CSSProperties}
               >
                 Dark
+              </Button>
+              <Button
+                variant={settings.colorMode === 'dark-blue' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => updateSettings({ colorMode: 'dark-blue' as ColorMode })}
+                className="flex-1 hover-accent text-xs"
+                style={{
+                  backgroundColor: settings.colorMode === 'dark-blue' ? 'var(--accent-color)' : undefined,
+                  borderColor: 'var(--accent-color)'
+                } as React.CSSProperties}
+              >
+                Dark Blue
               </Button>
             </div>
           </div>
