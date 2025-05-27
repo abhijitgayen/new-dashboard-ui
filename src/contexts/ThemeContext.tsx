@@ -114,7 +114,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
     // Apply scale
     const scaleValues = {
-      xs: "0.9",
+      xs: "0.95",
       sm: "0.9",
       lg: "1",
     };

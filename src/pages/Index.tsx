@@ -23,10 +23,11 @@ const DashboardContent = () => {
         <Header />
         {/* Main Content Area with enhanced styling */}
         <main
-          className={`flex-1 p-6 overflow-y-auto bg-gradient-to-br from-background via-background to-accent-color/5 ${settings.contentLayout === "centered"
-            ? "max-w-7xl mx-auto w-full"
-            : ""
-            }`}
+          className={`flex-1 p-6 overflow-y-auto bg-gradient-to-br from-background via-background to-accent-color/5 ${
+            settings.contentLayout === "centered"
+              ? "max-w-7xl mx-auto w-full"
+              : ""
+          }`}
         >
           <AnalyticsWidgets />
         </main>
