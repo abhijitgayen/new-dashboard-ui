@@ -149,27 +149,27 @@ const AnalyticsWidgets = () => {
                 <AreaChart data={conversionData}>
                   <defs>
                     <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <XAxis 
-                    dataKey="month" 
+                  <XAxis
+                    dataKey="month"
                     axisLine={false}
                     tickLine={false}
                     tick={{ fontSize: 12, fill: '#6b7280' }}
                   />
-                  <YAxis 
+                  <YAxis
                     axisLine={false}
                     tickLine={false}
                     tick={{ fontSize: 12, fill: '#6b7280' }}
                   />
-                  <Area 
-                    type="monotone" 
-                    dataKey="conversions" 
-                    stroke="#10b981" 
+                  <Area
+                    type="monotone"
+                    dataKey="conversions"
+                    stroke="#10b981"
                     strokeWidth={2}
-                    fill="url(#colorGradient)" 
+                    fill="url(#colorGradient)"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -228,16 +228,16 @@ const AnalyticsWidgets = () => {
               <div className="h-48">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={salesData}>
-                    <XAxis 
-                      dataKey="name" 
+                    <XAxis
+                      dataKey="name"
                       axisLine={false}
                       tickLine={false}
                       tick={{ fontSize: 12, fill: '#6b7280' }}
                     />
                     <YAxis hide />
-                    <Bar 
-                      dataKey="value" 
-                      fill="#e5e7eb" 
+                    <Bar
+                      dataKey="value"
+                      fill="#e5e7eb"
                       radius={[4, 4, 0, 0]}
                     />
                   </BarChart>
@@ -261,7 +261,7 @@ const AnalyticsWidgets = () => {
               <div className="w-full bg-muted rounded-full h-2">
                 <div className="bg-emerald-500 h-2 rounded-full" style={{ width: '75%' }} />
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Profit</span>
                 <span className="text-lg font-bold">$256.34</span>
@@ -269,7 +269,7 @@ const AnalyticsWidgets = () => {
               <div className="w-full bg-muted rounded-full h-2">
                 <div className="bg-blue-500 h-2 rounded-full" style={{ width: '60%' }} />
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Expense</span>
                 <span className="text-lg font-bold">$74.19</span>
