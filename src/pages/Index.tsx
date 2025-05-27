@@ -21,7 +21,7 @@ const DashboardContent = () => {
 
       <SidebarInset className="h-screen">
         {/* Header with modern styling */}
-        <header className="h-14 glass-effect border-b border-border/50 flex items-center justify-between px-6 relative">
+        <header className="h-14 border-b border-border flex items-center justify-between px-6 relative">
           {/* Accent gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-color/5 to-transparent opacity-50"></div>
           <div></div>

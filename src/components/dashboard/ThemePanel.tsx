@@ -360,17 +360,6 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
             >
               Reset to Default
             </Button>
-            <Button
-              className="w-full modern-button"
-              style={
-                {
-                  backgroundColor: "var(--accent-color)",
-                } as React.CSSProperties
-              }
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Download
-            </Button>
           </div>
         </div>
       </div>
