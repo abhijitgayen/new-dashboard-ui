@@ -1,13 +1,12 @@
-
-import React from 'react';
-import { 
-  BarChart3, 
-  ShoppingCart, 
-  DollarSign, 
-  Users, 
-  FolderOpen, 
-  Bitcoin, 
-  GraduationCap, 
+import React from "react";
+import {
+  BarChart3,
+  ShoppingCart,
+  DollarSign,
+  Users,
+  FolderOpen,
+  Bitcoin,
+  GraduationCap,
   Building2,
   Hotel,
   MessageSquare,
@@ -18,49 +17,56 @@ import {
   Mail,
   Crown,
   Palette,
-  Settings
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { SidebarMode } from '@/contexts/ThemeContext';
+  Settings,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { SidebarMode } from "@/contexts/ThemeContext";
 
 interface SidebarProps {
   onThemeToggle: () => void;
   sidebarMode: SidebarMode;
 }
 
-const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle, sidebarMode }) => {
-  const isIconMode = sidebarMode === 'icon';
+const DashboardSidebar: React.FC<SidebarProps> = ({
+  onThemeToggle,
+  sidebarMode,
+}) => {
+  const isIconMode = sidebarMode === "icon";
 
   const menuItems = [
-    { icon: BarChart3, label: 'Website Analytics', active: true },
-    { icon: ShoppingCart, label: 'E-commerce' },
-    { icon: DollarSign, label: 'Sales' },
-    { icon: Users, label: 'CRM' },
-    { icon: FolderOpen, label: 'Project Management' },
-    { icon: FileText, label: 'File Manager' },
-    { icon: Bitcoin, label: 'Crypto' },
-    { icon: GraduationCap, label: 'Academy/School' },
-    { icon: Building2, label: 'Hospital Management' },
-    { icon: Hotel, label: 'Hotel Dashboard', badge: 'Coming' }
+    { icon: BarChart3, label: "Website Analytics", active: true },
+    { icon: ShoppingCart, label: "E-commerce" },
+    { icon: DollarSign, label: "Sales" },
+    { icon: Users, label: "CRM" },
+    { icon: FolderOpen, label: "Project Management" },
+    { icon: FileText, label: "File Manager" },
+    { icon: Bitcoin, label: "Crypto" },
+    { icon: GraduationCap, label: "Academy/School" },
+    { icon: Building2, label: "Hospital Management" },
+    { icon: Hotel, label: "Hotel Dashboard", badge: "Coming" },
   ];
 
   const appItems = [
-    { icon: Trello, label: 'Kanban', badge: 'Coming' },
-    { icon: Bot, label: 'AI Chat', badge: 'New' },
-    { icon: FileText, label: 'Notes' },
-    { icon: MessageCircle, label: 'Chats', badge: '4' },
-    { icon: Mail, label: 'Mail', badge: 'Coming' }
+    { icon: Trello, label: "Kanban", badge: "Coming" },
+    { icon: Bot, label: "AI Chat", badge: "New" },
+    { icon: FileText, label: "Notes" },
+    { icon: MessageCircle, label: "Chats", badge: "4" },
+    { icon: Mail, label: "Mail", badge: "Coming" },
   ];
 
   return (
-    <div className={`${isIconMode ? 'w-16' : 'w-64'} h-screen bg-background border-r border-border flex flex-col transition-all duration-300`}>
+    <div
+      className={`${isIconMode ? "w-16" : "w-64"} h-screen bg-background border-r border-border flex flex-col transition-all duration-300`}
+    >
       {/* Header */}
-      <div className="p-6 border-b border-border">
+      <div className="h-14 border-b border-border flex justify-center">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-lg flex items-center justify-center">
             <BarChart3 className="w-5 h-5 text-white" />
           </div>
-          {!isIconMode && <span className="font-semibold text-foreground">Shadcn UI Kit</span>}
+          {!isIconMode && (
+            <span className="font-semibold text-foreground">Shadcn UI Kit</span>
+          )}
         </div>
       </div>
 
@@ -77,16 +83,20 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle, sidebarMode }
             {menuItems.map((item, index) => (
               <div
                 key={index}
-                className={`flex items-center ${isIconMode ? 'justify-center' : 'justify-between'} px-3 py-2 rounded-lg cursor-pointer transition-colors ${
-                  item.active 
-                    ? 'bg-accent text-accent-foreground' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                className={`flex items-center ${isIconMode ? "justify-center" : "justify-between"} px-3 py-2 rounded-lg cursor-pointer transition-colors ${
+                  item.active
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                 }`}
                 title={isIconMode ? item.label : undefined}
               >
-                <div className={`flex items-center ${isIconMode ? '' : 'gap-3'}`}>
+                <div
+                  className={`flex items-center ${isIconMode ? "" : "gap-3"}`}
+                >
                   <item.icon className="w-4 h-4" />
-                  {!isIconMode && <span className="text-sm font-medium">{item.label}</span>}
+                  {!isIconMode && (
+                    <span className="text-sm font-medium">{item.label}</span>
+                  )}
                 </div>
                 {!isIconMode && item.badge && (
                   <span className="text-xs px-2 py-1 bg-orange-500 text-white rounded-full">
@@ -109,19 +119,27 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle, sidebarMode }
             {appItems.map((item, index) => (
               <div
                 key={index}
-                className={`flex items-center ${isIconMode ? 'justify-center' : 'justify-between'} px-3 py-2 rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}
+                className={`flex items-center ${isIconMode ? "justify-center" : "justify-between"} px-3 py-2 rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}
                 title={isIconMode ? item.label : undefined}
               >
-                <div className={`flex items-center ${isIconMode ? '' : 'gap-3'}`}>
+                <div
+                  className={`flex items-center ${isIconMode ? "" : "gap-3"}`}
+                >
                   <item.icon className="w-4 h-4" />
-                  {!isIconMode && <span className="text-sm font-medium">{item.label}</span>}
+                  {!isIconMode && (
+                    <span className="text-sm font-medium">{item.label}</span>
+                  )}
                 </div>
                 {!isIconMode && item.badge && (
-                  <span className={`text-xs px-2 py-1 rounded-full ${
-                    item.badge === 'New' ? 'bg-emerald-500 text-white' :
-                    item.badge === 'Coming' ? 'bg-muted text-muted-foreground' :
-                    'bg-blue-500 text-white'
-                  }`}>
+                  <span
+                    className={`text-xs px-2 py-1 rounded-full ${
+                      item.badge === "New"
+                        ? "bg-emerald-500 text-white"
+                        : item.badge === "Coming"
+                          ? "bg-muted text-muted-foreground"
+                          : "bg-blue-500 text-white"
+                    }`}
+                  >
                     {item.badge}
                   </span>
                 )}
@@ -140,14 +158,15 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle, sidebarMode }
               <span className="text-sm font-medium">Upgrade to Pro</span>
             </div>
             <p className="text-xs text-muted-foreground mb-3">
-              Get pro now to own all dashboards, templates and components for life.
+              Get pro now to own all dashboards, templates and components for
+              life.
             </p>
             <Button size="sm" className="w-full">
               Get Shadcn UI Kit
             </Button>
           </div>
         )}
-        
+
         <Button
           variant="outline"
           size="sm"
@@ -155,7 +174,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onThemeToggle, sidebarMode }
           className="w-full"
           title={isIconMode ? "Theme Settings" : undefined}
         >
-          <Palette className="w-4 h-4 mr-2" />
+          <Palette className="w-4 h-4" />
           {!isIconMode && "Theme Settings"}
         </Button>
       </div>

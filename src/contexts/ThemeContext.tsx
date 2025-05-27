@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-export type ColorMode = 'light' | 'dark' | 'dark-blue';
-export type ContentLayout = 'full' | 'centered';
-export type FontFamily = 'sans' | 'mono' | 'display';
-export type Scale = 'sm' | 'xs' | 'lg';
-export type Radius = 'none' | 'sm' | 'md' | 'lg' | 'xl';
-export type SidebarMode = 'default' | 'icon';
+export type ColorMode = "light" | "dark" | "dark-blue";
+export type ContentLayout = "full" | "centered";
+export type FontFamily = "sans" | "mono" | "display";
+export type Scale = "sm" | "xs" | "lg";
+export type Radius = "none" | "sm" | "md" | "lg" | "xl";
+export type SidebarMode = "default" | "icon";
 
 interface ThemeSettings {
   colorMode: ColorMode;
@@ -24,13 +24,13 @@ interface ThemeContextType {
 }
 
 const defaultSettings: ThemeSettings = {
-  colorMode: 'dark',
-  contentLayout: 'full',
-  fontFamily: 'sans',
-  accentColor: '#10b981',
-  scale: 'sm',
-  radius: 'md',
-  sidebarMode: 'default'
+  colorMode: "dark",
+  contentLayout: "full",
+  fontFamily: "sans",
+  accentColor: "#10b981",
+  scale: "lg",
+  radius: "md",
+  sidebarMode: "default",
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -38,7 +38,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 };
@@ -59,9 +59,15 @@ const hexToHsl = (hex: string) => {
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
     }
     h /= 6;
   }
@@ -69,11 +75,13 @@ const hexToHsl = (hex: string) => {
   return `${Math.round(h * 360)} ${Math.round(s * 100)}% ${Math.round(l * 100)}%`;
 };
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [settings, setSettings] = useState<ThemeSettings>(defaultSettings);
 
   const updateSettings = (newSettings: Partial<ThemeSettings>) => {
-    setSettings(prev => ({ ...prev, ...newSettings }));
+    setSettings((prev) => ({ ...prev, ...newSettings }));
   };
 
   const resetToDefault = () => {
@@ -83,51 +91,53 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     // Apply theme to document
     const root = document.documentElement;
-    
+
     // Apply color mode
-    if (settings.colorMode === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('dark-blue');
-    } else if (settings.colorMode === 'dark-blue') {
-      root.classList.add('dark', 'dark-blue');
+    if (settings.colorMode === "dark") {
+      root.classList.add("dark");
+      root.classList.remove("dark-blue");
+    } else if (settings.colorMode === "dark-blue") {
+      root.classList.add("dark", "dark-blue");
     } else {
-      root.classList.remove('dark', 'dark-blue');
+      root.classList.remove("dark", "dark-blue");
     }
 
     // Apply font family
-    root.style.setProperty('--font-family', {
-      sans: 'Inter, system-ui, sans-serif',
-      mono: 'JetBrains Mono, monospace',
-      display: 'Cal Sans, system-ui, sans-serif'
-    }[settings.fontFamily]);
+    root.style.setProperty(
+      "--font-family",
+      {
+        sans: "Inter, system-ui, sans-serif",
+        mono: "JetBrains Mono, monospace",
+        display: "Cal Sans, system-ui, sans-serif",
+      }[settings.fontFamily],
+    );
 
     // Apply scale
     const scaleValues = {
-      xs: '0.8',
-      sm: '0.9',
-      lg: '1.1'
+      xs: "0.9",
+      sm: "0.9",
+      lg: "1",
     };
-    root.style.setProperty('--scale', scaleValues[settings.scale]);
+    root.style.setProperty("--scale", scaleValues[settings.scale]);
     root.style.transform = `scale(${scaleValues[settings.scale]})`;
 
     // Apply radius
     const radiusValues = {
-      none: '0px',
-      sm: '0.25rem',
-      md: '0.5rem',
-      lg: '0.75rem',
-      xl: '1rem'
+      none: "0px",
+      sm: "0.25rem",
+      md: "0.5rem",
+      lg: "0.75rem",
+      xl: "1rem",
     };
-    root.style.setProperty('--radius', radiusValues[settings.radius]);
+    root.style.setProperty("--radius", radiusValues[settings.radius]);
 
     // Apply accent color to primary variables
     const hslColor = hexToHsl(settings.accentColor);
-    root.style.setProperty('--primary', hslColor);
-    root.style.setProperty('--accent-color', settings.accentColor);
-    
-    // Also update ring color for focus states
-    root.style.setProperty('--ring', hslColor);
+    root.style.setProperty("--primary", hslColor);
+    root.style.setProperty("--accent-color", settings.accentColor);
 
+    // Also update ring color for focus states
+    root.style.setProperty("--ring", hslColor);
   }, [settings]);
 
   return (
