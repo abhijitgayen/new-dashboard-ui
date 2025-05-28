@@ -32,7 +32,7 @@ function SidebarFooter({
       )}
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline">
+          <Button variant="outline" className={`w-full ${isIconMode ? "justify-center" : "justify-start"} gap-2`}>
             <Palette className="w-4 h-4" />
             {!isIconMode && "Theme Settings"}
           </Button>
