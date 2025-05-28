@@ -1,13 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Crown, Palette } from "lucide-react";
-import React from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import ThemePanel from "../ThemePanel";
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 function SidebarFooter({
   isIconMode,
-  onThemeToggle,
 }: {
   isIconMode: boolean;
-  onThemeToggle: () => void;
 }) {
   return (
     <div className="p-3 border-t border-border">
@@ -26,18 +30,22 @@ function SidebarFooter({
           </Button>
         </div>
       )}
-
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={onThemeToggle}
-        className="w-full"
-        title={isIconMode ? "Theme Settings" : undefined}
-      >
-        <Palette className="w-4 h-4" />
-        {!isIconMode && "Theme Settings"}
-      </Button>
-    </div>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="outline">
+            <Palette className="w-4 h-4" />
+            {!isIconMode && "Theme Settings"}
+          </Button>
+        </SheetTrigger>
+        <SheetContent>
+          <ScrollArea className="h-full w-full">
+            <div className="pl-2 pr-4 pt-2">
+              <ThemePanel />
+            </div>
+          </ScrollArea>
+        </SheetContent>
+      </Sheet>
+    </div >
   );
 }
 

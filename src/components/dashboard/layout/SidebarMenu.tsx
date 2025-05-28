@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 interface SidebarMenuItem {
     label: string;
     icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     active?: boolean;
     badge?: string;
+    url: string;
 }
 
 function SidebarMenu({
@@ -27,8 +29,9 @@ function SidebarMenu({
                 )}
                 <div className="space-y-1">
                     {menuItems.map((item, index) => (
-                        <div
+                        <Link
                             key={index}
+                            to={item.url}
                             className={`flex items-center ${isIconMode ? "justify-center" : "justify-between"} px-3 py-2 rounded-lg cursor-pointer transition-colors ${item.active
                                 ? "bg-accent text-accent-foreground"
                                 : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
@@ -48,7 +51,7 @@ function SidebarMenu({
                                     {item.badge}
                                 </span>
                             )}
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
@@ -62,7 +65,8 @@ function SidebarMenu({
                 )}
                 <div className="space-y-1">
                     {appItems.map((item, index) => (
-                        <div
+                        <Link
+                            to={item.url}
                             key={index}
                             className={`flex items-center ${isIconMode ? "justify-center" : "justify-between"} px-3 py-2 rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}
                             title={isIconMode ? item.label : undefined}
@@ -87,7 +91,7 @@ function SidebarMenu({
                                     {item.badge}
                                 </span>
                             )}
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

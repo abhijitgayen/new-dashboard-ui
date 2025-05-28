@@ -21,62 +21,65 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SidebarMode } from "@/contexts/ThemeContext";
-import SidebarHeader from "./layout/SidebarHeader";
+import Header from "./layout/SidebarHeader";
 import SidebarMenu from "./layout/SidebarMenu";
-import SidebarFooter from "./layout/SidebarFooter";
+import Footer from "./layout/SidebarFooter";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from "../ui/sidebar";
 
 interface SidebarProps {
-  onThemeToggle: () => void;
   sidebarMode: SidebarMode;
 }
 
 const DashboardSidebar: React.FC<SidebarProps> = ({
-  onThemeToggle,
   sidebarMode,
 }) => {
   const isIconMode = sidebarMode === "icon";
 
   const menuItems = [
-    { icon: BarChart3, label: "Website Analytics", active: true },
-    { icon: ShoppingCart, label: "E-commerce" },
-    { icon: DollarSign, label: "Sales" },
-    { icon: Users, label: "CRM" },
-    { icon: FolderOpen, label: "Project Management" },
-    { icon: FileText, label: "File Manager" },
-    { icon: Bitcoin, label: "Crypto" },
-    { icon: GraduationCap, label: "Academy/School" },
-    { icon: Building2, label: "Hospital Management" },
-    { icon: Hotel, label: "Hotel Dashboard", badge: "Coming" },
+    { icon: BarChart3, url: "#", label: "Website Analytics", active: true },
+    { icon: ShoppingCart, url: "#", label: "E-commerce" },
+    { icon: DollarSign, url: "#", label: "Sales" },
+    { icon: Users, url: "#", label: "CRM" },
+    { icon: FolderOpen, url: "#", label: "Project Management" },
+    { icon: FileText, url: "#", label: "File Manager" },
+    { icon: Bitcoin, url: "#", label: "Crypto" },
+    { icon: GraduationCap, url: "#", label: "Academy/School" },
+    { icon: Building2, url: "#", label: "Hospital Management" },
+    { icon: Hotel, url: "#", label: "Hotel Dashboard", badge: "Coming" },
   ];
 
   const appItems = [
-    { icon: Trello, label: "Kanban", badge: "Coming" },
-    { icon: Bot, label: "AI Chat", badge: "New" },
-    { icon: FileText, label: "Notes" },
-    { icon: MessageCircle, label: "Chats", badge: "4" },
-    { icon: Mail, label: "Mail", badge: "Coming" },
+    { icon: Trello, url: "#", label: "Kanban", badge: "Coming" },
+    { icon: Bot, url: "#", label: "AI Chat", badge: "New" },
+    { icon: FileText, url: "#", label: "Notes" },
+    { icon: MessageCircle, url: "#", label: "Chats", badge: "4" },
+    { icon: Mail, url: "#", label: "Mail", badge: "Coming" },
   ];
 
   return (
-    <div
-      className={`${isIconMode ? "w-16" : "w-64"} h-screen bg-background border-r border-border flex flex-col transition-all duration-300`}
-    >
-      {/* Header */}
-      <SidebarHeader isIconMode={isIconMode} />
+    <Sidebar className={`${isIconMode ? "w-16" : "w-64"} h-screen bg-background border-r border-border`}>
+      <SidebarHeader>
+        {/* Header */}
+        <Header isIconMode={isIconMode} />
+      </SidebarHeader>
 
-      {/* Menu */}
-      <SidebarMenu
-        isIconMode={isIconMode}
-        menuItems={menuItems}
-        appItems={appItems}
-      />
+      <SidebarContent>
+        {/* Menu */}
+        <SidebarMenu
+          isIconMode={isIconMode}
+          menuItems={menuItems}
+          appItems={appItems}
+        />
+      </SidebarContent>
 
-      {/* Footer */}
-      <SidebarFooter
-        isIconMode={isIconMode}
-        onThemeToggle={onThemeToggle}
-      />
-    </div>
+      <SidebarFooter>
+        {/* Footer */}
+        <Footer
+          isIconMode={isIconMode}
+        />
+      </SidebarFooter>
+      {/* <SidebarRail /> */}
+    </Sidebar>
   );
 };
 

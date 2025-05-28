@@ -12,7 +12,7 @@ function ThemeRadius({ settings, updateSettings }: {
             <Label className="text-sm font-medium mb-2 block accent-text">
                 Radius:
             </Label>
-            <div className="flex gap-2">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
                 {[
                     { label: "○", value: "none" as Radius },
                     { label: "SM", value: "sm" as Radius },
