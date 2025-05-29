@@ -172,11 +172,9 @@
     }
 
     .accent-gradient {
-        background: linear-gradient(
-            135deg,
-            var(--accent-color),
-            rgba(var(--accent-color-rgb), 0.6)
-        );
+        background: linear-gradient(135deg,
+                var(--accent-color),
+                rgba(var(--accent-color-rgb), 0.6));
     }
 
     .modern-card {
@@ -186,11 +184,9 @@
 
     .modern-button {
         @apply relative overflow-hidden transition-all duration-300 hover:shadow-lg;
-        background: linear-gradient(
-            135deg,
-            var(--accent-color),
-            rgba(var(--accent-color-rgb), 0.8)
-        );
+        background: linear-gradient(135deg,
+                var(--accent-color),
+                rgba(var(--accent-color-rgb), 0.8));
     }
 
     .modern-input {
@@ -208,28 +204,29 @@
     0% {
         background-position: -200px 0;
     }
+
     100% {
         background-position: calc(200px + 100%) 0;
     }
 }
 
 @keyframes accent-pulse {
+
     0%,
     100% {
         box-shadow: 0 0 0 0 var(--accent-color);
     }
+
     50% {
         box-shadow: 0 0 0 10px transparent;
     }
 }
 
 .animate-shimmer {
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.1),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
     background-size: 200px 100%;
     animation: shimmer 1.5s infinite;
 }
@@ -247,4 +244,9 @@
 .hover-accent:hover {
     /* color: var(--accent-color); */
     box-shadow: 0 4px 20px rgba(var(--accent-color-rgb), 0.3);
+}
+
+body,
+html {
+    overflow-x: hidden;
 }
