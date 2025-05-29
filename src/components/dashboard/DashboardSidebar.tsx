@@ -37,7 +37,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
 
   const menuItems = [
     { icon: BarChart3, url: "#", label: "Website Analytics", active: true },
-    { icon: ShoppingCart, url: "#", label: "E-commerce" },
+    { icon: ShoppingCart, url: "/o", label: "E-commerce" },
     { icon: DollarSign, url: "#", label: "Sales" },
     { icon: Users, url: "#", label: "CRM" },
     { icon: FolderOpen, url: "#", label: "Project Management" },

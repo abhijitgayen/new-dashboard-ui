@@ -4,7 +4,7 @@ import AnalyticsWidgets from "@/components/dashboard/AnalyticsWidgets";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import Header from "@/components/dashboard/layout/Header";
 
-const DashboardContent = () => {
+const DashboardContent = ({ children }) => {
   const { settings } = useTheme();
 
   return (
@@ -26,17 +26,17 @@ const DashboardContent = () => {
             : ""
             }`}
         >
-          <AnalyticsWidgets />
+          {children}
         </main>
       </SidebarInset>
     </SidebarProvider>
   );
 };
 
-const Index = () => {
+const Index = ({ children }) => {
   return (
     <ThemeProvider>
-      <DashboardContent />
+      <DashboardContent children={children} />
     </ThemeProvider>
   );
 };
