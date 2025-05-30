@@ -19,12 +19,22 @@ import {
   Palette,
   Settings,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { SidebarMode } from "@/contexts/ThemeContext";
+import Header from "./layout/sidebar/Header";
+import Menu from "./layout/sidebar/Menu";
+import Footer from "./layout/sidebar/Footer";
+import { SidebarFooter, SidebarHeader, SidebarMenu } from "../ui/sidebar";
 
 interface SidebarProps {
   onThemeToggle: () => void;
   sidebarMode: SidebarMode;
+}
+
+export interface ItenInterface {
+  icon: React.ElementType;
+  label: string;
+  active?: boolean;
+  badge?: string;
 }
 
 const DashboardSidebar: React.FC<SidebarProps> = ({
@@ -33,7 +43,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
 }) => {
   const isIconMode = sidebarMode === "icon";
 
-  const menuItems = [
+  const menuItems: ItenInterface[] = [
     { icon: BarChart3, label: "Website Analytics", active: true },
     { icon: ShoppingCart, label: "E-commerce" },
     { icon: DollarSign, label: "Sales" },
@@ -46,7 +56,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
     { icon: Hotel, label: "Hotel Dashboard", badge: "Coming" },
   ];
 
-  const appItems = [
+  const appItems: ItenInterface[] = [
     { icon: Trello, label: "Kanban", badge: "Coming" },
     { icon: Bot, label: "AI Chat", badge: "New" },
     { icon: FileText, label: "Notes" },
@@ -58,126 +68,19 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
     <div
       className={`${isIconMode ? "w-16" : "w-64"} h-screen bg-background border-r border-border flex flex-col transition-all duration-300`}
     >
-      {/* Header */}
-      <div className="h-14 border-b border-border flex justify-center">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-lg flex items-center justify-center">
-            <BarChart3 className="w-5 h-5 text-white" />
-          </div>
-          {!isIconMode && (
-            <span className="font-semibold text-foreground">Shadcn UI Kit</span>
-          )}
-        </div>
-      </div>
+      <SidebarHeader className="border-b border-border -mt-[17px]">
+        <Header isIconMode={isIconMode} />
+      </SidebarHeader>
 
       {/* Menu */}
-      <div className="flex-1 overflow-y-auto px-4 py-6">
-        {/* Dashboards Section */}
-        <div className="mb-8">
-          {!isIconMode && (
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-2">
-              Dashboards
-            </h3>
-          )}
-          <div className="space-y-1">
-            {menuItems.map((item, index) => (
-              <div
-                key={index}
-                className={`flex items-center ${isIconMode ? "justify-center" : "justify-between"} px-3 py-2 rounded-lg cursor-pointer transition-colors ${
-                  item.active
-                    ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
-                }`}
-                title={isIconMode ? item.label : undefined}
-              >
-                <div
-                  className={`flex items-center ${isIconMode ? "" : "gap-3"}`}
-                >
-                  <item.icon className="w-4 h-4" />
-                  {!isIconMode && (
-                    <span className="text-sm font-medium">{item.label}</span>
-                  )}
-                </div>
-                {!isIconMode && item.badge && (
-                  <span className="text-xs px-2 py-1 bg-orange-500 text-white rounded-full">
-                    {item.badge}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Apps Section */}
-        <div className="mb-8">
-          {!isIconMode && (
-            <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-2">
-              Apps
-            </h3>
-          )}
-          <div className="space-y-1">
-            {appItems.map((item, index) => (
-              <div
-                key={index}
-                className={`flex items-center ${isIconMode ? "justify-center" : "justify-between"} px-3 py-2 rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}
-                title={isIconMode ? item.label : undefined}
-              >
-                <div
-                  className={`flex items-center ${isIconMode ? "" : "gap-3"}`}
-                >
-                  <item.icon className="w-4 h-4" />
-                  {!isIconMode && (
-                    <span className="text-sm font-medium">{item.label}</span>
-                  )}
-                </div>
-                {!isIconMode && item.badge && (
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full ${
-                      item.badge === "New"
-                        ? "bg-emerald-500 text-white"
-                        : item.badge === "Coming"
-                          ? "bg-muted text-muted-foreground"
-                          : "bg-blue-500 text-white"
-                    }`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <SidebarMenu className="flex-1 overflow-y-auto border-b border-border">
+        <Menu appItems={appItems} isIconMode={isIconMode} menuItems={menuItems} />
+      </SidebarMenu>
 
       {/* Footer */}
-      <div className="p-4 border-t border-border">
-        {!isIconMode && (
-          <div className="bg-muted rounded-lg p-4 mb-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Crown className="w-4 h-4 text-yellow-500" />
-              <span className="text-sm font-medium">Upgrade to Pro</span>
-            </div>
-            <p className="text-xs text-muted-foreground mb-3">
-              Get pro now to own all dashboards, templates and components for
-              life.
-            </p>
-            <Button size="sm" className="w-full">
-              Get Shadcn UI Kit
-            </Button>
-          </div>
-        )}
-
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={onThemeToggle}
-          className="w-full"
-          title={isIconMode ? "Theme Settings" : undefined}
-        >
-          <Palette className="w-4 h-4" />
-          {!isIconMode && "Theme Settings"}
-        </Button>
-      </div>
+      <SidebarFooter>
+        <Footer isIconMode={isIconMode} onThemeToggle={onThemeToggle} />
+      </SidebarFooter>
     </div>
   );
 };
