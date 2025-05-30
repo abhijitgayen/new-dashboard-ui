@@ -23,7 +23,7 @@ import { SidebarMode } from "@/contexts/ThemeContext";
 import Header from "./layout/sidebar/Header";
 import Menu from "./layout/sidebar/Menu";
 import Footer from "./layout/sidebar/Footer";
-import { SidebarFooter, SidebarHeader, SidebarMenu } from "../ui/sidebar";
+import { Sidebar, SidebarFooter, SidebarHeader, SidebarMenu } from "../ui/sidebar";
 
 interface SidebarProps {
   onThemeToggle: () => void;
@@ -65,8 +65,9 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <div
-      className={`${isIconMode ? "w-16" : "w-64"} h-screen bg-background border-r border-border flex flex-col transition-all duration-300`}
+    <Sidebar
+      collapsible={isIconMode ? "none" : "offcanvas"}
+      className={`${isIconMode ? "w-16" : ""} h-screen bg-background border-r border-border flex flex-col transition-all duration-300`}
     >
       <SidebarHeader className="border-b border-border -mt-[17px]">
         <Header isIconMode={isIconMode} />
@@ -81,7 +82,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
       <SidebarFooter>
         <Footer isIconMode={isIconMode} onThemeToggle={onThemeToggle} />
       </SidebarFooter>
-    </div>
+    </Sidebar>
   );
 };
 

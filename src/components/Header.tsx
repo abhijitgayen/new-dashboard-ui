@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Bell, Settings, User } from "lucide-react";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 
 function Header() {
     return (
