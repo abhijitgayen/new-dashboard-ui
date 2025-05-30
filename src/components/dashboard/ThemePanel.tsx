@@ -1,13 +1,13 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
-import ThemeScale from "../theme/ThemeScale";
-import ThemeRadius from "../theme/ThemeRadius";
-import ColorMode from "../theme/ColorMode";
-import ContentLayout from "../theme/ContentLayout";
-import SidebarMode from "../theme/SidebarMode";
-import FontFamily from "../theme/FontFamily";
-import ColorEditing from "../theme/ColorEditing";
+import ThemeScale from "./layout/theme/ThemeScale";
+import ThemeRadius from "./layout/theme/ThemeRadius";
+import ColorMode from "./layout/theme/ColorMode";
+import ContentLayout from "./layout/theme/ContentLayout";
+import SidebarMode from "./layout/theme/SidebarMode";
+import FontFamily from "./layout/theme/FontFamily";
+import ColorEditing from "./layout/theme/ColorEditing";
 
 
 const ThemePanel = () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ColorMode as colorMode } from '@/contexts/ThemeContext'
-import { Label } from '../ui/label'
-import { Button } from '../ui/button'
+import { Label } from '../../../ui/label'
+import { Button } from '../../../ui/button'
 
 function ColorMode({
     settings,

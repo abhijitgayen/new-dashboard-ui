@@ -9,21 +9,16 @@ import {
   GraduationCap,
   Building2,
   Hotel,
-  MessageSquare,
   Trello,
   Bot,
   FileText,
   MessageCircle,
   Mail,
-  Crown,
-  Palette,
-  Settings,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { SidebarMode } from "@/contexts/ThemeContext";
-import Header from "./layout/SidebarHeader";
-import SidebarMenu from "./layout/SidebarMenu";
-import Footer from "./layout/SidebarFooter";
+import Header from "./layout/sidebar/SidebarHeader";
+import SidebarMenu from "./layout/sidebar/SidebarMenu";
+import Footer from "./layout/sidebar/SidebarFooter";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from "../ui/sidebar";
 
 interface SidebarProps {
@@ -36,7 +31,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
   const isIconMode = sidebarMode === "icon";
 
   const menuItems = [
-    { icon: BarChart3, url: "#", label: "Website Analytics", active: true },
+    { icon: BarChart3, url: "/", label: "Website Analytics" },
     { icon: ShoppingCart, url: "/o", label: "E-commerce" },
     { icon: DollarSign, url: "#", label: "Sales" },
     { icon: Users, url: "#", label: "CRM" },
@@ -57,28 +52,24 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <Sidebar className={`${isIconMode ? "w-16" : "w-64"} h-screen bg-background border-r border-border`}>
-      <SidebarHeader>
-        {/* Header */}
+    <Sidebar
+      collapsible={isIconMode ? "none" : "offcanvas"}
+      className={`${isIconMode ? "w-16" : "w-64"} h-screen bg-background border-r border-border`}>
+      <SidebarHeader className="border-b border-border -mt-[17px]">
         <Header isIconMode={isIconMode} />
       </SidebarHeader>
-
       <SidebarContent>
-        {/* Menu */}
         <SidebarMenu
           isIconMode={isIconMode}
           menuItems={menuItems}
           appItems={appItems}
         />
       </SidebarContent>
-
-      <SidebarFooter>
-        {/* Footer */}
+      <SidebarFooter className="border-t border-border">
         <Footer
           isIconMode={isIconMode}
         />
       </SidebarFooter>
-      {/* <SidebarRail /> */}
     </Sidebar>
   );
 };

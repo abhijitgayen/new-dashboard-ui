@@ -2,43 +2,42 @@ import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import AnalyticsWidgets from "@/components/dashboard/AnalyticsWidgets";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import Header from "@/components/dashboard/layout/Header";
+import Header from "@/components/Header";
+import { Outlet } from "react-router-dom";
+import { SidebarMode } from "@/contexts/ThemeContext";
 
-const DashboardContent = ({ children }) => {
+
+const DashboardContent = () => {
   const { settings } = useTheme();
+  const isIconMode = settings.sidebarMode === "icon";
 
   return (
     <SidebarProvider>
-      {/* Sidebar */}
       <DashboardSidebar
         sidebarMode={settings.sidebarMode}
       />
-
       <SidebarInset className="h-screen">
-        {/* Header with modern styling */}
-
         <Header />
-        <SidebarTrigger className="mt-4 pl-2 md:hidden absolute" />
-        {/* Main Content Area with enhanced styling */}
+        <SidebarTrigger className={`mt-4 ml-5 absolute ${isIconMode ? "hidden" : ""}`} />
         <main
           className={`flex-1 p-6 overflow-y-auto bg-gradient-to-br from-background via-background to-accent-color/5 ${settings.contentLayout === "centered"
             ? "max-w-7xl mx-auto w-full"
             : ""
             }`}
         >
-          {children}
+          <Outlet />
         </main>
       </SidebarInset>
     </SidebarProvider>
   );
 };
 
-const Index = ({ children }) => {
+const DashboardLayout = () => {
   return (
     <ThemeProvider>
-      <DashboardContent children={children} />
+      <DashboardContent />
     </ThemeProvider>
   );
 };
 
-export default Index;
+export default DashboardLayout;

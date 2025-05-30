@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import DashboardLayout from "./components/dashboard/layout/DashboardLayout";
 import NotFound from "./pages/NotFound";
 import AnalyticsWidgets from "./components/dashboard/AnalyticsWidgets";
 import Ecommerce from "./components/Ecommerce";
@@ -17,7 +17,10 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route index element={<Index children={<AnalyticsWidgets />} />} />
+          <Route path="/" element={<DashboardLayout />} >
+            <Route index element={<AnalyticsWidgets />} />
+            <Route path="/o" element={<Ecommerce />} />
+          </Route>
           {/* <Route path="/o" element={<Index children={<Ecommerce />} />} /> */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

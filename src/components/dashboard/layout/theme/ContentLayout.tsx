@@ -1,7 +1,7 @@
 import React from 'react'
 import { ContentLayout as Contentlayout } from '@/contexts/ThemeContext'
-import { Label } from '../ui/label'
-import { Button } from '../ui/button'
+import { Label } from '../../../ui/label'
+import { Button } from '../../../ui/button'
 
 function ContentLayout({
     settings,

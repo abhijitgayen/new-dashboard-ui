@@ -5,7 +5,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import ThemePanel from "../ThemePanel";
+import ThemePanel from "../../ThemePanel";
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 function SidebarFooter({
@@ -14,7 +14,7 @@ function SidebarFooter({
   isIconMode: boolean;
 }) {
   return (
-    <div className="p-3 border-t border-border">
+    <div className="p-3">
       {!isIconMode && (
         <div className="bg-muted rounded-lg p-4 mb-4">
           <div className="flex items-center gap-2 mb-2">
