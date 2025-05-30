@@ -54,8 +54,8 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
   return (
     <Sidebar
       collapsible={isIconMode ? "none" : "offcanvas"}
-      className={`${isIconMode ? "w-16" : "w-64"} h-screen bg-background border-r border-border`}>
-      <SidebarHeader className="border-b border-border -mt-[17px]">
+      className={`${isIconMode ? "w-16" : "w-64"} h-screen `}>
+      <SidebarHeader className="border-b border-border/50 -mt-[17px]">
         <Header isIconMode={isIconMode} />
       </SidebarHeader>
       <SidebarContent>
