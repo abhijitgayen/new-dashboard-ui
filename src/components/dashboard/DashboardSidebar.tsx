@@ -16,9 +16,9 @@ import {
   Mail,
 } from "lucide-react";
 import { SidebarMode } from "@/contexts/ThemeContext";
-import Header from "./layout/sidebar/SidebarHeader";
-import SidebarMenu from "./layout/sidebar/SidebarMenu";
-import Footer from "./layout/sidebar/SidebarFooter";
+import Header from "./layout/sidebar/Header";
+import SidebarMenu from "./layout/sidebar/Menu";
+import Footer from "./layout/sidebar/Footer";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from "../ui/sidebar";
 
 interface SidebarProps {
