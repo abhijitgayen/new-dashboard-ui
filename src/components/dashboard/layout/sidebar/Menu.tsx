@@ -1,81 +1,78 @@
+import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
 import type { ItenInterface } from "../../AppSidebar"
+import { Badge } from "@/components/ui/badge"
+import { Link } from "react-router-dom"
 
 function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuItems: ItenInterface[], appItems: ItenInterface[] }) {
     return (
-        <div className="flex-1 overflow-y-auto px-4 py-6">
+        <div className="overflow-hidden">
             {/* Dashboards Section */}
-            <div className="mb-8">
+            <SidebarGroup>
                 {!isIconMode && (
-                    <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-2">
-                        Dashboards
-                    </h3>
+                    <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
                 )}
-                <div className="space-y-1">
-                    {menuItems.map((item, index) => (
-                        <div
-                            key={index}
-                            className={`flex items-center ${isIconMode ? "justify-center" : "justify-between"} px-3 py-2 rounded-lg cursor-pointer transition-colors ${item.active
+                <SidebarMenu>
+                    {menuItems.map((item) => (
+                        <SidebarMenuItem
+                            className={`flex items-center ${isIconMode ? "justify-center mx-2" : "justify-between"} rounded-lg cursor-pointer transition-colors ${item.active
                                 ? "bg-accent text-accent-foreground"
                                 : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                                 }`}
-                            title={isIconMode ? item.label : undefined}
-                        >
-                            <div
-                                className={`flex items-center ${isIconMode ? "" : "gap-3"}`}
-                            >
-                                <item.icon className="w-4 h-4" />
-                                {!isIconMode && (
-                                    <span className="text-sm font-medium">{item.label}</span>
-                                )}
-                            </div>
+                            key={item.label}
+                            title={isIconMode ? item.label : undefined}>
+                            <SidebarMenuButton asChild>
+                                <a href={item.url}>
+                                    <item.icon />
+                                    {!isIconMode && (
+                                        <span className="text-sm font-medium">{item.label}</span>
+                                    )}
+                                </a>
+                            </SidebarMenuButton>
                             {!isIconMode && item.badge && (
-                                <span className="text-xs px-2 py-1 bg-orange-500 text-white rounded-full">
-                                    {item.badge}
-                                </span>
+                                <SidebarMenuBadge>
+                                    <Badge variant={item.badge === "New" ? "default" : "secondary"} className="text-xs">
+                                        {item.badge}
+                                    </Badge>
+                                </SidebarMenuBadge>
                             )}
-                        </div>
+                        </SidebarMenuItem>
                     ))}
-                </div>
-            </div>
+                </SidebarMenu>
+            </SidebarGroup>
 
             {/* Apps Section */}
-            <div className="mb-8">
+            <SidebarGroup>
                 {!isIconMode && (
-                    <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-2">
-                        Apps
-                    </h3>
+                    <SidebarGroupLabel>Apps</SidebarGroupLabel>
                 )}
-                <div className="space-y-1">
-                    {appItems.map((item, index) => (
-                        <div
-                            key={index}
-                            className={`flex items-center ${isIconMode ? "justify-center" : "justify-between"} px-3 py-2 rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}
+                <SidebarMenu>
+                    {appItems.map((item) => (
+                        <SidebarMenuItem
+                            className={`flex items-center ${isIconMode ? "justify-center mx-2" : "justify-between"} rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}
                             title={isIconMode ? item.label : undefined}
-                        >
-                            <div
-                                className={`flex items-center ${isIconMode ? "" : "gap-3"}`}
-                            >
-                                <item.icon className="w-4 h-4" />
-                                {!isIconMode && (
-                                    <span className="text-sm font-medium">{item.label}</span>
-                                )}
-                            </div>
+                            key={item.label}>
+                            <SidebarMenuButton asChild>
+                                <a href={item.url}>
+                                    <item.icon />
+                                    {!isIconMode && (
+                                        <span className="text-sm font-medium">{item.label}</span>
+                                    )}
+                                </a>
+                            </SidebarMenuButton>
                             {!isIconMode && item.badge && (
-                                <span
-                                    className={`text-xs px-2 py-1 rounded-full ${item.badge === "New"
-                                        ? "bg-emerald-500 text-white"
-                                        : item.badge === "Coming"
-                                            ? "bg-muted text-muted-foreground"
-                                            : "bg-blue-500 text-white"
-                                        }`}
-                                >
-                                    {item.badge}
-                                </span>
+                                <SidebarMenuBadge>
+                                    <Badge
+                                        variant={item.badge === "New" ? "default" : item.badge === "Coming" ? "secondary" : "destructive"}
+                                        className="text-xs"
+                                    >
+                                        {item.badge}
+                                    </Badge>
+                                </SidebarMenuBadge>
                             )}
-                        </div>
+                        </SidebarMenuItem>
                     ))}
-                </div>
-            </div>
+                </SidebarMenu>
+            </SidebarGroup>
         </div>
     )
 }

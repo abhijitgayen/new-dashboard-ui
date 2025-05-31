@@ -35,6 +35,7 @@ export interface ItenInterface {
   label: string;
   active?: boolean;
   badge?: string;
+  url?: string
 }
 
 const AppSidebar: React.FC<SidebarProps> = ({
@@ -43,31 +44,31 @@ const AppSidebar: React.FC<SidebarProps> = ({
 }) => {
   const isIconMode = sidebarMode === "icon";
 
-  const menuItems: ItenInterface[] = [
-    { icon: BarChart3, label: "Website Analytics", active: true },
-    { icon: ShoppingCart, label: "E-commerce" },
-    { icon: DollarSign, label: "Sales" },
-    { icon: Users, label: "CRM" },
-    { icon: FolderOpen, label: "Project Management" },
-    { icon: FileText, label: "File Manager" },
-    { icon: Bitcoin, label: "Crypto" },
-    { icon: GraduationCap, label: "Academy/School" },
-    { icon: Building2, label: "Hospital Management" },
-    { icon: Hotel, label: "Hotel Dashboard", badge: "Coming" },
-  ];
+  const menuItems = [
+    { icon: BarChart3, url: "/", label: "Website Analytics" },
+    { icon: ShoppingCart, url: "/o", label: "E-commerce" },
+    { icon: DollarSign, url: "#", label: "Sales" },
+    { icon: Users, url: "#", label: "CRM" },
+    { icon: FolderOpen, url: "#", label: "Project Management" },
+    { icon: FileText, url: "#", label: "File Manager" },
+    { icon: Bitcoin, url: "#", label: "Crypto" },
+    { icon: GraduationCap, url: "#", label: "Academy/School" },
+    { icon: Building2, url: "#", label: "Hospital Management" },
+    { icon: Hotel, url: "#", label: "Hotel Dashboard", badge: "Coming" },
+  ]
 
-  const appItems: ItenInterface[] = [
-    { icon: Trello, label: "Kanban", badge: "Coming" },
-    { icon: Bot, label: "AI Chat", badge: "New" },
-    { icon: FileText, label: "Notes" },
-    { icon: MessageCircle, label: "Chats", badge: "4" },
-    { icon: Mail, label: "Mail", badge: "Coming" },
-  ];
+  const appItems = [
+    { icon: Trello, url: "#", label: "Kanban", badge: "Coming" },
+    { icon: Bot, url: "#", label: "AI Chat", badge: "New" },
+    { icon: FileText, url: "#", label: "Notes" },
+    { icon: MessageCircle, url: "#", label: "Chats", badge: "4" },
+    { icon: Mail, url: "#", label: "Mail", badge: "Coming" },
+  ]
 
   return (
     <Sidebar
-      collapsible={isIconMode ? "none" : "offcanvas"}
-      className={`${isIconMode ? "w-16" : ""} h-screen bg-background border-r border-border flex flex-col transition-all duration-300`}
+      collapsible={isIconMode ? "none" : "icon"}
+      className={`${isIconMode ? "w-16" : ""} h-screen `}
     >
       <SidebarHeader className="border-b border-border -mt-[17px]">
         <Header isIconMode={isIconMode} />
