@@ -37,7 +37,7 @@ export interface ItenInterface {
   badge?: string;
 }
 
-const DashboardSidebar: React.FC<SidebarProps> = ({
+const AppSidebar: React.FC<SidebarProps> = ({
   onThemeToggle,
   sidebarMode,
 }) => {
@@ -86,4 +86,4 @@ const DashboardSidebar: React.FC<SidebarProps> = ({
   );
 };
 
-export default DashboardSidebar;
+export default AppSidebar;

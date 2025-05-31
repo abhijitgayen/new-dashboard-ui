@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
-import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
+import AppSidebar from "@/components/dashboard/AppSidebar";
 import ThemePanel from "@/components/dashboard/ThemePanel";
 import AnalyticsWidgets from "@/components/dashboard/AnalyticsWidgets";
 
@@ -13,7 +13,7 @@ const DashboardContent = () => {
 
   return (
     <SidebarProvider>
-      <DashboardSidebar
+      <AppSidebar
         onThemeToggle={() => setIsThemePanelOpen(true)}
         sidebarMode={settings.sidebarMode}
       />

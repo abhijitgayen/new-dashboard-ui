@@ -1,4 +1,4 @@
-import type { ItenInterface } from "../../DashboardSidebar"
+import type { ItenInterface } from "../../AppSidebar"
 
 function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuItems: ItenInterface[], appItems: ItenInterface[] }) {
     return (
