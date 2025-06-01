@@ -21,12 +21,12 @@ function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuIt
                             key={item.label}
                             title={isIconMode ? item.label : undefined}>
                             <SidebarMenuButton asChild>
-                                <a href={item.url}>
+                                <Link to={item.url}>
                                     <item.icon />
                                     {!isIconMode && (
                                         <span className="text-sm font-medium">{item.label}</span>
                                     )}
-                                </a>
+                                </Link>
                             </SidebarMenuButton>
                             {!isIconMode && item.badge && (
                                 <SidebarMenuBadge>
@@ -52,12 +52,12 @@ function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuIt
                             title={isIconMode ? item.label : undefined}
                             key={item.label}>
                             <SidebarMenuButton asChild>
-                                <a href={item.url}>
+                                <Link to={item.url}>
                                     <item.icon />
                                     {!isIconMode && (
                                         <span className="text-sm font-medium">{item.label}</span>
                                     )}
-                                </a>
+                                </Link>
                             </SidebarMenuButton>
                             {!isIconMode && item.badge && (
                                 <SidebarMenuBadge>

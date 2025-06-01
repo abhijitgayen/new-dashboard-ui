@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
 import AppSidebar from "@/components/dashboard/AppSidebar";
 import ThemePanel from "@/components/dashboard/ThemePanel";
-import AnalyticsWidgets from "@/components/dashboard/AnalyticsWidgets";
+import { Outlet } from "react-router-dom";
+
 
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import Header from "@/components/Header";
@@ -26,7 +27,7 @@ const DashboardContent = () => {
             : ""
             }`}
         >
-          <AnalyticsWidgets />
+          <Outlet />
         </main>
       </SidebarInset>
     </SidebarProvider>
