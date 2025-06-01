@@ -28,10 +28,6 @@ const DashboardContent = () => {
         >
           <AnalyticsWidgets />
         </main>
-        <ThemePanel
-          isOpen={isThemePanelOpen}
-          onClose={() => setIsThemePanelOpen(false)}
-        />
       </SidebarInset>
     </SidebarProvider>
   );

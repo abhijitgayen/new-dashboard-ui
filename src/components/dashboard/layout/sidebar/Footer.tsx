@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { Crown, Palette } from "lucide-react";
+import ThemePanel from "../../ThemePanel";
 
 function Footer({ isIconMode, onThemeToggle }: { isIconMode: boolean, onThemeToggle: () => void }) {
     return (
@@ -29,11 +30,12 @@ function Footer({ isIconMode, onThemeToggle }: { isIconMode: boolean, onThemeTog
                 <SidebarMenuItem>
                     <Sheet>
                         <SheetTrigger asChild>
-                            <SidebarMenuButton>
+                            <SidebarMenuButton className="">
                                 <Palette className="w-4 h-4" />
                                 {!isIconMode && "Theme Settings"}
                             </SidebarMenuButton>
                         </SheetTrigger>
+                        <ThemePanel />
                     </Sheet>
                 </SidebarMenuItem>
             </SidebarMenu>

@@ -20,10 +20,10 @@ interface ThemePanelProps {
   onClose: () => void;
 }
 
-const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
+const ThemePanel = () => {
   const { settings, updateSettings, resetToDefault } = useTheme();
 
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
 
   const colorOptions = [
     { name: "Emerald", value: "#10b981" },
@@ -35,30 +35,10 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <SheetContent>
+    <SheetContent className="overflow-y-auto max-h-screen p-6 bg-background border-l border-border/50 glass-effect">
       <SheetHeader>
-        <SheetTitle>Shadcn UI</SheetTitle>
-        <SheetDescription>
-          A collection of re-usable components built using Radix UI and Tailwind CSS.
-        </SheetDescription>
+        <SheetTitle>Theme panel</SheetTitle>
       </SheetHeader>
-      {/* <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-end">
-        <div className="w-80 h-full glass-effect border-l border-border/50 overflow-y-auto">
-          <div className="p-6"> */}
-      {/* Header with accent styling */}
-      {/* <div className="flex items-center justify-between mb-2 pb-2 border-b border-border/50"> */}
-      {/* <h2 className="text-lg font-semibold accent-text">Theme preset:</h2> */}
-      {/* <Button
-                variant="ghost"
-                size="icon"
-                onClick={onClose}
-                className="hover-accent"
-              >
-                <X className="w-4 h-4" />
-              </Button> */}
-      {/* </div> */}
-
-      {/* Scale */}
       <div className="mb-6">
         <Label className="text-sm font-medium mb-2 block accent-text">
           Scale:
@@ -369,9 +349,6 @@ const ThemePanel: React.FC<ThemePanelProps> = ({ isOpen, onClose }) => {
           Reset to Default
         </Button>
       </div>
-      {/* </div>
-        </div> */}
-      {/* </div> */}
     </SheetContent>
   );
 };
