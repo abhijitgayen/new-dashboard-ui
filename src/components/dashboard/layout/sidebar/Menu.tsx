@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuItems: ItenInterface[], appItems: ItenInterface[] }) {
     return (
-        <div className="overflow-hidden">
+        <div className="overflow-x-hidden">
             {/* Dashboards Section */}
             <SidebarGroup>
                 {!isIconMode && (

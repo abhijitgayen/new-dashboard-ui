@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { Crown, Palette } from "lucide-react";
 
 function Footer({ isIconMode, onThemeToggle }: { isIconMode: boolean, onThemeToggle: () => void }) {
     return (
-        <div className="p-4">
+        <div className="">
             <div className="bg-muted rounded-lg p-4 mb-4">
-
                 {isIconMode ? <Crown className="w-4 h-4 text-yellow-500 -ml-2" /> : ""}
                 {!isIconMode && (
                     <>
@@ -24,16 +25,18 @@ function Footer({ isIconMode, onThemeToggle }: { isIconMode: boolean, onThemeTog
                 )}
             </div>
 
-            <Button
-                variant="outline"
-                size="sm"
-                onClick={onThemeToggle}
-                className="w-full"
-                title={isIconMode ? "Theme Settings" : undefined}
-            >
-                <Palette className="w-4 h-4" />
-                {!isIconMode && "Theme Settings"}
-            </Button>
+            <SidebarMenu>
+                <SidebarMenuItem>
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <SidebarMenuButton>
+                                <Palette className="w-4 h-4" />
+                                {!isIconMode && "Theme Settings"}
+                            </SidebarMenuButton>
+                        </SheetTrigger>
+                    </Sheet>
+                </SidebarMenuItem>
+            </SidebarMenu>
         </div>
     )
 }
