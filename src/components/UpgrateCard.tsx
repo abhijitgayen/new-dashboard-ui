@@ -18,7 +18,7 @@ function UpgradeCard() {
     }
 
     return (
-        <Card className="bg-slate-900 border-slate-800 text-white translate-middle duration-200 mb-2">
+        <Card className="bg-background/5 border text-white translate-middle duration-200 mb-2">
             <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-sm font-medium">
                     <Crown className="h-4 w-4 text-yellow-500" />

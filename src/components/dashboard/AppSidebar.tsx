@@ -70,17 +70,17 @@ const AppSidebar: React.FC<SidebarProps> = ({
       collapsible={isIconMode ? "none" : "icon"}
       className={`${isIconMode ? "w-16" : ""} h-screen`}
     >
-      <SidebarHeader className="">
+      <SidebarHeader className="bg-background">
         <Header isIconMode={isIconMode} />
       </SidebarHeader>
 
       {/* Menu */}
-      <SidebarMenu className="flex-1 overflow-y-auto border-b border-t border-border -mt-4">
+      <SidebarMenu className="flex-1 overflow-y-auto border-b border-t border-border -mt-4 bg-background">
         <Menu appItems={appItems} isIconMode={isIconMode} menuItems={menuItems} />
       </SidebarMenu>
 
       {/* Footer */}
-      <SidebarFooter>
+      <SidebarFooter className="bg-background">
         <Footer isIconMode={isIconMode} onThemeToggle={onThemeToggle} />
       </SidebarFooter>
     </Sidebar>
