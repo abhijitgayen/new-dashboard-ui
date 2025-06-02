@@ -1,11 +1,14 @@
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar'
 import { BarChart3 } from 'lucide-react'
 
 function Header({ isIconMode }: { isIconMode: boolean }) {
+  const { state } = useSidebar()
+  const isCollapsed = state === "collapsed"
+
   return (
-    <SidebarMenu className='h-[55px]'>
+    <SidebarMenu className='h-[55px] flex justify-center'>
       <SidebarMenuItem>
-        <SidebarMenuButton size="lg" className="bg-transparent hover:bg-transparent cursor-default">
+        <SidebarMenuButton size="lg" className={`bg-transparent hover:bg-transparent cursor-default ${!isCollapsed ? '-mt-3' : '-mt-3'}`}>
           <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
             <BarChart3 className="size-4" />
           </div>

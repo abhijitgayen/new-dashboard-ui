@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
 import AppSidebar from "@/components/dashboard/AppSidebar";
-import ThemePanel from "@/components/dashboard/ThemePanel";
 import { Outlet } from "react-router-dom";
 
 
