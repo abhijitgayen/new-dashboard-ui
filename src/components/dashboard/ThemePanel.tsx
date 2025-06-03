@@ -1,7 +1,5 @@
 import React from "react";
-import { X, Download, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import {
   useTheme,
@@ -12,18 +10,10 @@ import {
   Radius,
   SidebarMode,
 } from "@/contexts/ThemeContext";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
-import { SidebarMenuButton } from "../ui/sidebar";
-
-interface ThemePanelProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+import { SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
 
 const ThemePanel = () => {
   const { settings, updateSettings, resetToDefault } = useTheme();
-
-  // if (!isOpen) return null;
 
   const colorOptions = [
     { name: "Emerald", value: "#10b981" },
@@ -35,9 +25,9 @@ const ThemePanel = () => {
   ];
 
   return (
-    <SheetContent className="overflow-y-auto max-h-screen p-6 bg-background border-l border-border/50 glass-effect">
-      <SheetHeader>
-        <SheetTitle>Theme panel</SheetTitle>
+    <SheetContent className="overflow-y-auto max-h-screen p-6 bg-background border-l border-border/50 glass-effect w-80">
+      <SheetHeader className="-mt-4 justify-start items-start py-3 border-b border-border/50 mb-2">
+        <SheetTitle className="text-lg font-semibold accent-text">Theme panel</SheetTitle>
       </SheetHeader>
       <div className="mb-6">
         <Label className="text-sm font-medium mb-2 block accent-text">
@@ -78,7 +68,7 @@ const ThemePanel = () => {
         <Label className="text-sm font-medium mb-2 block accent-text">
           Radius:
         </Label>
-        <div className="flex gap-2">
+        <div className="grid md:grid-cols-5 grid-cols-3 gap-2">
           {[
             { label: "○", value: "none" as Radius },
             { label: "SM", value: "sm" as Radius },

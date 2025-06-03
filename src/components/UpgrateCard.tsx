@@ -3,7 +3,7 @@ import { Button } from "./ui/button"
 import { useSidebar } from "./ui/sidebar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 
-function UpgradeCard({ isIconMode }: { isIconMode?: boolean }) {
+function UpgradeCard({ isIconMode, className }: { isIconMode?: boolean, className?: string }) {
     const { state } = useSidebar()
     const isCollapsed = state === "collapsed"
 
@@ -26,7 +26,8 @@ function UpgradeCard({ isIconMode }: { isIconMode?: boolean }) {
     }
 
     return (
-        <Card className="bg-muted border text-white translate-middle duration-200 mb-2 w-full max-w-sm shadow-lg hover:shadow-xl transition-shadow">
+        <Card className={`bg-muted border text-white translate-middle duration-1000 mb-2 w-full max-w-sm shadow-lg hover:shadow-xl ${className}`}
+        >
             <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-sm font-medium">
                     <Crown className="h-4 w-4 text-yellow-500" />
