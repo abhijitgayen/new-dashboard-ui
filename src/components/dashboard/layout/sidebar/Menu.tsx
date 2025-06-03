@@ -1,15 +1,18 @@
-import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
+import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
 import type { ItenInterface } from "../../AppSidebar"
 import { Badge } from "@/components/ui/badge"
 import { Link } from "react-router-dom"
 
 function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuItems: ItenInterface[], appItems: ItenInterface[] }) {
+    const { state } = useSidebar()
+    const isCollapsed = state === "collapsed"
+
     return (
-        <div className="overflow-x-hidden">
+        <div className={`overflow-x-hidden mb-3  py-2 ${isIconMode || isCollapsed ? "" : "px-2"}`}>
             {/* Dashboards Section */}
-            <SidebarGroup>
+            <SidebarGroup className={`mb-4 ${isIconMode ? "mt-2" : ""}`}>
                 {!isIconMode && (
-                    <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
+                    <SidebarGroupLabel className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Dashboards</SidebarGroupLabel>
                 )}
                 <SidebarMenu>
                     {menuItems.map((item) => (
@@ -20,11 +23,11 @@ function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuIt
                                 }`}
                             key={item.label}
                             title={isIconMode ? item.label : undefined}>
-                            <SidebarMenuButton asChild>
-                                <Link to={item.url}>
+                            <SidebarMenuButton asChild className="h-full">
+                                <Link to={item.url} className="">
                                     <item.icon />
                                     {!isIconMode && (
-                                        <span className="text-sm font-medium">{item.label}</span>
+                                        <span className="text-sm font-medium w-full ml-1">{item.label}</span>
                                     )}
                                 </Link>
                             </SidebarMenuButton>
@@ -43,7 +46,7 @@ function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuIt
             {/* Apps Section */}
             <SidebarGroup>
                 {!isIconMode && (
-                    <SidebarGroupLabel>Apps</SidebarGroupLabel>
+                    <SidebarGroupLabel className="uppercase text-slate-400">Apps</SidebarGroupLabel>
                 )}
                 <SidebarMenu>
                     {appItems.map((item) => (
@@ -51,11 +54,11 @@ function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuIt
                             className={`flex items-center ${isIconMode ? "justify-center mx-2" : "justify-between"} rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}
                             title={isIconMode ? item.label : undefined}
                             key={item.label}>
-                            <SidebarMenuButton asChild>
+                            <SidebarMenuButton asChild className="h-full">
                                 <Link to={item.url}>
                                     <item.icon />
                                     {!isIconMode && (
-                                        <span className="text-sm font-medium">{item.label}</span>
+                                        <span className="text-sm font-medium w-full ml-1">{item.label}</span>
                                     )}
                                 </Link>
                             </SidebarMenuButton>

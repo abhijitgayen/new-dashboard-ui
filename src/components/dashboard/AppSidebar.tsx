@@ -45,7 +45,7 @@ const AppSidebar: React.FC<SidebarProps> = ({
   const isIconMode = sidebarMode === "icon";
 
   const menuItems = [
-    { icon: BarChart3, url: "/", label: "Website Analytics" },
+    { icon: BarChart3, url: "/", label: "Website Analytics", active: true },
     { icon: ShoppingCart, url: "/o", label: "E-commerce" },
     { icon: DollarSign, url: "#", label: "Sales" },
     { icon: Users, url: "#", label: "CRM" },
@@ -68,7 +68,7 @@ const AppSidebar: React.FC<SidebarProps> = ({
   return (
     <Sidebar
       collapsible={isIconMode ? "none" : "icon"}
-      className={`${isIconMode ? "w-16" : ""} h-screen`}
+      className={`${isIconMode ? "w-16" : ""} h-screen border-r`}
     >
       <SidebarHeader className="bg-background">
         <Header isIconMode={isIconMode} />
@@ -81,8 +81,9 @@ const AppSidebar: React.FC<SidebarProps> = ({
 
       {/* Footer */}
       <SidebarFooter className="bg-background">
-        <Footer isIconMode={isIconMode} onThemeToggle={onThemeToggle} />
+        <Footer isIconMode={isIconMode} />
       </SidebarFooter>
+
     </Sidebar>
   );
 };

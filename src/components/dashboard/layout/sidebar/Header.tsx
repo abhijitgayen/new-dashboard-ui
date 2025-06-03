@@ -6,7 +6,7 @@ function Header({ isIconMode }: { isIconMode: boolean }) {
   const isCollapsed = state === "collapsed"
 
   return (
-    <SidebarMenu className='h-[55px] flex justify-center'>
+    <SidebarMenu className={`h-[55px] flex justify-center ${!isCollapsed ? "items-center" : ""}`}>
       <SidebarMenuItem>
         <SidebarMenuButton size="lg" className={`bg-transparent hover:bg-transparent cursor-default ${!isCollapsed ? '-mt-3' : '-mt-3'}`}>
           <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
