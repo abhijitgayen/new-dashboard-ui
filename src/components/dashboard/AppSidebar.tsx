@@ -45,7 +45,7 @@ const AppSidebar: React.FC<SidebarProps> = ({
   const isIconMode = sidebarMode === "icon";
 
   const menuItems = [
-    { icon: BarChart3, url: "/", label: "Website Analytics", active: true },
+    { icon: BarChart3, url: "/", label: "Website Analytics" },
     { icon: ShoppingCart, url: "/o", label: "E-commerce" },
     { icon: DollarSign, url: "#", label: "Sales" },
     { icon: Users, url: "#", label: "CRM" },

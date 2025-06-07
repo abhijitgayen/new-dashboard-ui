@@ -56,7 +56,7 @@ function Menu({ isIconMode, menuItems, appItems }: { isIconMode: boolean, menuIt
                             key={item.label}>
                             <SidebarMenuButton asChild className="h-full">
                                 <Link to={item.url}>
-                                    <item.icon />
+                                    <item.icon className="w-4 h-4" />
                                     {!isIconMode && (
                                         <span className="text-sm font-medium w-full ml-1">{item.label}</span>
                                     )}

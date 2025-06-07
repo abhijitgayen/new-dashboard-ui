@@ -1,27 +1,58 @@
 import { Button } from "@/components/ui/button";
-import { Bell, Settings, User } from "lucide-react";
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { Bell, LucideProps, MessagesSquare, Share, TriangleAlert, User, UserPlus, Wrench } from "lucide-react";
+import Filter from "./Filter";
+
+interface HeaderContent {
+    icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
+    notifiction?: string
+}
 
 function Header() {
+    const headerContent: HeaderContent[] = [
+        {
+            icon: UserPlus
+        },
+        {
+            icon: Bell
+        },
+        {
+            icon: MessagesSquare,
+            notifiction: ""
+        },
+        {
+            icon: Share
+        },
+        {
+            icon: TriangleAlert,
+            notifiction: ""
+        },
+        {
+            icon: Wrench
+        },
+        {
+            icon: User
+        }
+    ]
+
     return (
         <header className="h-14 border-b border-border flex items-center justify-between px-6 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-color/5 to-transparent opacity-50"></div>
             <div></div>
             <div className="flex items-center gap-2 relative z-10">
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className="relative hover-accent"
-                >
-                    <Bell className="w-4 h-4" />
-                    <span className="absolute -top-1 -right-1 w-3 h-3 accent-bg rounded-full text-xs accent-pulse"></span>
-                </Button>
-                <Button variant="ghost" size="icon" className="hover-accent">
-                    <Settings className="w-4 h-4" />
-                </Button>
-                <Button variant="ghost" size="icon" className="hover-accent">
-                    <User className="w-4 h-4" />
-                </Button>
+                {
+                    headerContent.map((item, index) => (
+                        <Button
+                            key={index}
+                            variant="ghost"
+                            size="icon"
+                            className="relative hover-accent"
+                        >
+                            <item.icon className="w-4 h-4" />
+                            {item.notifiction ? <span className="absolute -top-1 -right-1 w-3 h-3 accent-bg rounded-full text-xs accent-pulse">{item.notifiction}</span> : ""}
+                        </Button>
+                    ))
+                }
+                <Filter />
             </div>
         </header>
     )
