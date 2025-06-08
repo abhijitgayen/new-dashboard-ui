@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Bell, LucideProps, MessagesSquare, Share, TriangleAlert, User, UserPlus, Wrench } from "lucide-react";
-import Filter from "./Filter";
+import Index from "./filter/Index";
 
 interface HeaderContent {
     icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
@@ -13,7 +13,8 @@ function Header() {
             icon: UserPlus
         },
         {
-            icon: Bell
+            icon: Bell,
+            notifiction: ""
         },
         {
             icon: MessagesSquare,
@@ -52,7 +53,7 @@ function Header() {
                         </Button>
                     ))
                 }
-                <Filter />
+                <Index />
             </div>
         </header>
     )
