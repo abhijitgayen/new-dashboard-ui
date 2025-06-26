@@ -3,8 +3,9 @@ import { Bell, LucideProps, MessagesSquare, Share, TriangleAlert, User, UserPlus
 import Index from "./filter/Index";
 
 interface HeaderContent {
-    icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
-    notifiction?: string
+    icon?: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
+    notifiction?: string,
+    component?: React.ReactNode
 }
 
 function Header() {
@@ -28,7 +29,7 @@ function Header() {
             notifiction: ""
         },
         {
-            icon: Wrench
+            component: <Wrench className="w-4 h-4" />,
         },
         {
             icon: User
@@ -48,7 +49,7 @@ function Header() {
                             size="icon"
                             className="relative hover-accent"
                         >
-                            <item.icon className="w-4 h-4" />
+                            {item.icon ? <item.icon className="w-4 h-4" /> : item.component}
                             {item.notifiction ? <span className="absolute -top-1 -right-1 w-3 h-3 accent-bg rounded-full text-xs accent-pulse">{item.notifiction}</span> : ""}
                         </Button>
                     ))

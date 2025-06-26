@@ -10,9 +10,9 @@ function Footer({ isIconMode }: { isIconMode: boolean }) {
     const isCollapsed = state === "collapsed"
     return (
         <div className={`${!isCollapsed ? "px-2" : ""}`}>
-            {!isIconMode && (
+            {/* {!isIconMode && (
                 <UpgradeCard isIconMode={isIconMode} className={`${!isCollapsed ? "animate-accordion-down duration-500" : ""}`} />
-            )}
+            )} */}
             {/* <SidebarMenu className={`w-full ${isIconMode ? "items-center" : ""}`}>
                 <SidebarMenuItem > */}
             <Sheet>
@@ -20,7 +20,7 @@ function Footer({ isIconMode }: { isIconMode: boolean }) {
                     <SidebarMenuButton className={`h-10 w-full items-center justify-center ${isIconMode ? "items-center justify-center h-8 w-8" : ""}`} variant="outline">
                         <Palette className={`${isIconMode ? "ml-2" : ""}`} />
                         <div className={`${isCollapsed ? "hidden" : ""}`}>
-                            {!isIconMode && "Theme Settings"}
+                            {!isIconMode && <div className="translate-middle duration-1000">Theme Settings</div>}
                         </div>
                     </SidebarMenuButton>
                 </SheetTrigger>
