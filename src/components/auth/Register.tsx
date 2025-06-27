@@ -22,18 +22,18 @@ function RegisterForm({
     const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <Card className="overflow-hidden p-0 bg-current">
+            <Card className="overflow-hidden p-0">
                 <CardContent className="grid p-0 md:grid-cols-2">
                     <form className="p-6 md:p-8 " onSubmit={handleSubmit(onSubmit)}>
                         <div className="flex flex-col gap-6">
-                            <div className="flex flex-col items-center text-center text-slate-50">
+                            <div className="flex flex-col items-center text-center">
                                 <h1 className="text-2xl font-bold">Register</h1>
                                 <p className="text-muted-foreground text-balance">
                                     Register to your Acme Inc account
                                 </p>
                             </div>
                             <div className="grid gap-3">
-                                <Label htmlFor="name" className="text-slate-50">Name</Label>
+                                <Label htmlFor="name" >Name</Label>
                                 <Input
                                     id="name"
                                     type="text"
@@ -42,7 +42,7 @@ function RegisterForm({
                                 />
                             </div>
                             <div className="grid gap-3">
-                                <Label htmlFor="email" className="text-slate-50">Email</Label>
+                                <Label htmlFor="email" >Email</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -51,7 +51,7 @@ function RegisterForm({
                                 />
                             </div>
                             <div className="grid gap-3">
-                                <Label htmlFor="password" className="text-slate-50">Password</Label>
+                                <Label htmlFor="password">Password</Label>
                                 <Input id="password" type="password" {...register("password", { required: true })} />
                             </div>
                             <Button type="submit" className="w-full">
@@ -91,7 +91,7 @@ function RegisterForm({
                                     <span className="sr-only">Login with Meta</span>
                                 </Button>
                             </div>
-                            <div className="text-center text-sm text-slate-50">
+                            <div className="text-center text-sm">
                                 Don&apos;t have an account?{" "}
                                 <Link to="/login" className="underline underline-offset-4">
                                     Login
@@ -119,7 +119,7 @@ function RegisterForm({
 
 export default function RegisterPage() {
     return (
-        <div className="bg-current flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+        <div className="flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
             <div className="w-full max-w-sm md:max-w-3xl">
                 <RegisterForm className="lg:w-[850px]" />
             </div>
