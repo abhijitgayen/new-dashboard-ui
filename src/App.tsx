@@ -8,8 +8,9 @@ import AnalyticsWidgets from "@/components/dashboard/AnalyticsWidgets";
 import NotFound from "./pages/NotFound";
 import Test from "./components/dashboard/Test";
 import Index from "./components/createDatasets/Index";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
+import LoginPage from "./components/auth/LoginForm";
+import RegisterPage from "./components/auth/Register";
+import ForgotPassword from "./components/auth/ForgotPassword";
 
 const queryClient = new QueryClient();
 
@@ -20,8 +21,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forget-password" element={<ForgotPassword />} />
           <Route path="/" element={<Dashboardlayout />} >
             <Route index element={<AnalyticsWidgets />} />
             <Route path="/test" element={<Test />} />
