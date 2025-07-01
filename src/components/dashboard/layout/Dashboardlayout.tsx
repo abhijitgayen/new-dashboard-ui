@@ -17,7 +17,7 @@ const DashboardContent = () => {
         onThemeToggle={() => setIsThemePanelOpen(true)}
         sidebarMode={settings.sidebarMode}
       />
-      <SidebarInset className="h-screen ">
+      <SidebarInset className="h-screen">
         <Header />
         <SidebarTrigger className={`absolute top-4 left-4 ${settings.sidebarMode === "icon" ? "hidden" : ""}`} />
         <main

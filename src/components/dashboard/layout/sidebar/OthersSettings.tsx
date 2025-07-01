@@ -32,7 +32,7 @@ function OthersSettings({ isCollapsed, isIconMode, otherItems }) {
         <Collapsible asChild>
             <SidebarGroup>
                 {(isCollapsed || !isIconMode) ? (
-                    <SidebarGroupLabel className="uppercase text-slate-400">Other</SidebarGroupLabel>
+                    <SidebarGroupLabel className={`uppercase text-slate-400 ${isIconMode ? "hidden" : ""}`}>Other</SidebarGroupLabel>
                 ) : null}
                 {otherItems?.map((group) => (
                     <SidebarMenu key={group.label}>

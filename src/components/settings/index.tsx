@@ -19,13 +19,13 @@ export default function Settings() {
   return (
     <>
       {/* ===== Top Heading ===== */}
-      <Header>
-        {/* <Search /> */}
+      {/* <Header>
+        <Search />
         <div className='ml-auto flex items-center space-x-4'>
           <ThemeSwitch />
           <ProfileDropdown />
         </div>
-      </Header>
+      </Header> */}
 
       <Main fixed>
         <div className='space-y-0.5'>
