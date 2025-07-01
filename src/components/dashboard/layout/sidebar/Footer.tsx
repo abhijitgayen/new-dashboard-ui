@@ -3,7 +3,7 @@ import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 import { Crown, Palette } from "lucide-react";
 import ThemePanel from "../../ThemePanel";
-import UpgradeCard from "@/components/UpgrateCard";
+import UpgradeCard from "@/components/layout/UpgrateCard";
 
 function Footer({ isIconMode }: { isIconMode: boolean }) {
     const { state } = useSidebar()

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Bell, LucideProps, MessagesSquare, Share, TriangleAlert, User, UserPlus, Wrench } from "lucide-react";
-import Index from "./filter/Index";
+import Index from "../filter/Index";
 
 interface HeaderContent {
     icon?: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
@@ -29,7 +29,7 @@ function Header() {
             notifiction: ""
         },
         {
-            component: <Wrench className="w-4 h-4" />,
+            icon: Wrench,
         },
         {
             icon: User

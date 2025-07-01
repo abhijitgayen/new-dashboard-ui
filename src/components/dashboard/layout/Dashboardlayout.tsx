@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 
 const DashboardContent = () => {
   const [isThemePanelOpen, setIsThemePanelOpen] = useState(false);
