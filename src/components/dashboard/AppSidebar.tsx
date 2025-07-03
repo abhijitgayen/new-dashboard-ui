@@ -64,7 +64,7 @@ const AppSidebar: React.FC<SidebarProps> = ({
   const menuItems = [
     { icon: BarChart3, url: "/", label: "Website Analytics" },
     { icon: ShoppingCart, url: "/test", label: "E-commerce" },
-    { icon: DollarSign, url: "#", label: "Sales" },
+    { icon: DollarSign, url: "login", label: "Sales" },
     { icon: FolderOpen, url: "#", label: "Project Management" },
     { icon: FileText, url: "/create-datasets", label: "Create Datasets" },
   ]
