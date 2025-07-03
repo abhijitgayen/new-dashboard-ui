@@ -18,7 +18,7 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { AxiosError } from 'axios'
 import { toast } from 'sonner'
-import { ThemeProvider } from './contexts/theme-context'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 import SettingsAppearance from "./components/settings/appearance";
 import SettingsNotifications from "./components/settings/notifications";
 import SettingsDisplay from "./components/settings/display";
@@ -73,34 +73,34 @@ const queryClient = new QueryClient();
 
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forget-password" element={<ForgotPassword />} />
-            <Route path="/" element={<Dashboardlayout />} >
-              <Route path="/settings" element={<Settings />} >
-                <Route index element={<SettingsProfile />} />
-                <Route path="account" element={<SettingsAccount />} />
-                <Route path="appearance" element={<SettingsAppearance />} />
-                <Route path="notifications" element={<SettingsNotifications />} />
-                <Route path="display" element={<SettingsDisplay />} />
-              </Route>
-              <Route index element={<AnalyticsWidgets />} />
-              <Route path="/test" element={<Test />} />
-              <Route path="/create-datasets" element={<Index />} />
+  // <QueryClientProvider client={queryClient}>
+  <ThemeProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forget-password" element={<ForgotPassword />} />
+          <Route path="/" element={<Dashboardlayout />} >
+            <Route path="/settings" element={<Settings />} >
+              <Route index element={<SettingsProfile />} />
+              <Route path="account" element={<SettingsAccount />} />
+              <Route path="appearance" element={<SettingsAppearance />} />
+              <Route path="notifications" element={<SettingsNotifications />} />
+              <Route path="display" element={<SettingsDisplay />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
+            <Route index element={<AnalyticsWidgets />} />
+            <Route path="/test" element={<Test />} />
+            <Route path="/create-datasets" element={<Index />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </ThemeProvider>
+  // </QueryClientProvider>
 );
 
 export default App;
