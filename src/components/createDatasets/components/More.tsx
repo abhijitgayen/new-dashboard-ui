@@ -21,7 +21,7 @@ function More({ handleDelite }: { handleDelite: () => void }) {
             <DropdownMenuTrigger asChild className="">
                 <Ellipsis />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="start">
+            <DropdownMenuContent className="lg:w-56" align="start">
                 <DropdownMenuLabel>Manage Workspace</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>

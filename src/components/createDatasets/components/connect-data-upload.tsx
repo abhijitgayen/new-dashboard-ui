@@ -3,6 +3,7 @@ import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { X, File, Check } from "lucide-react"
 
 export interface UploadedFile {
@@ -67,7 +68,6 @@ export default function ConnectDataUpload({ workspaceId, connectFile }: ConnectD
         setFiles((prev) => [...prev, ...newFiles])
         setIsUploading(false)
 
-        // Reset input
         if (fileInputRef.current) {
             fileInputRef.current.value = ""
         }
@@ -78,52 +78,57 @@ export default function ConnectDataUpload({ workspaceId, connectFile }: ConnectD
     }
 
     return (
-        <div className="w-full max-w-md mx-auto">
-            <div className="">
+        <Popover>
+            <PopoverTrigger asChild>
+                <Button>Connect Data</Button>
+            </PopoverTrigger>
+
+            <PopoverContent className="w-[250px] lg:w-[300px] -translate-x-3 lg:-translate-x-10 glass-effect">
                 <input
                     ref={fileInputRef}
                     type="file"
                     multiple
                     onChange={handleFileChange}
                     className="hidden"
-                    accept=".csv,.xlsx,.xls,.json,.txt"
+                    accept=".csv,.xlsx,.xls,.json,.txt,.pdf"
                 />
 
                 <Button
-                    variant="outline"
                     onClick={handleFileSelect}
                     disabled={isUploading}
-                    className="px-2 border py-1.5 bg-white border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-700 font-normal rounded-md"
+                    className="w-full mb-4"
                 >
-                    {isUploading ? "Uploading..." : "Connect data"}
+                    {isUploading ? "Uploading..." : "Upload Files"}
                 </Button>
 
                 {files.length > 0 && (
-                    <Card className="border border-gray-200 my-4">
-                        <CardContent className="p-4 space-y-3">
+                    <Card className="border border-gray-200 mb-4">
+                        <CardContent className="p-3 space-y-3">
                             <div className="flex items-center justify-between">
-                                <h3 className="text-sm font-medium text-gray-900">Connected Files ({files.length})</h3>
+                                <h3 className="text-sm font-medium text-gray-900">
+                                    Connected Files ({files.length})
+                                </h3>
                                 <Badge variant="secondary" className="text-xs">
                                     <Check className="w-3 h-3 mr-1" />
                                     Ready
                                 </Badge>
                             </div>
 
-                            <div className="space-y-2">
+                            <div className="space-y-2 ">
                                 {files.map((file) => (
-                                    <div key={file.id} className="flex items-center justify-between p-2 bg-gray-50 rounded-md">
+                                    <div key={file.id} className="flex items-center justify-between p-1 bg-secondary rounded-md">
                                         <div className="flex items-center space-x-2 min-w-0 flex-1">
                                             <File className="w-4 h-4 text-gray-400 flex-shrink-0" />
                                             <div className="min-w-0 flex-1">
-                                                <p className="text-sm font-medium text-gray-900 truncate">{file.name}</p>
+                                                <p className="text-sm font-medium text-gray-400 truncate">{file.name}</p>
                                                 <p className="text-xs text-gray-500">{formatFileSize(file.size)}</p>
                                             </div>
                                         </div>
                                         <Button
-                                            variant="ghost"
+                                            variant="destructive"
                                             size="sm"
                                             onClick={() => removeFile(file.id)}
-                                            className="text-gray-400 hover:text-gray-600 p-1 h-auto"
+                                            className="p-1 h-auto"
                                         >
                                             <X className="w-4 h-4" />
                                         </Button>
@@ -135,31 +140,29 @@ export default function ConnectDataUpload({ workspaceId, connectFile }: ConnectD
                 )}
 
                 {files.length > 0 && (
-                    <div className="flex space-x-2">
+                    <div className="grid grid-flow-col grid-rows-2 gap-2">
                         <Button
-                            variant="outline"
+                            variant="secondary"
                             onClick={handleFileSelect}
-                            className="flex-1 bg-gray-400 text-gray-600 border-gray-200 hover:bg-gray-500"
+                            className=""
                         >
                             Add More
                         </Button>
                         <Button
                             onClick={() => setFiles([])}
-                            variant="outline"
-                            className="text-gray-50 border bg-red-700 hover:bg-red-600"
+                            variant="destructive"
                         >
                             Clear All
                         </Button>
                         <Button
+                            variant="secondary"
                             onClick={handleConnect}
-                            variant="outline"
-                            className="bg-gray-400 text-gray-600 border-gray-200 hover:bg-gray-500"
                         >
                             Connect
                         </Button>
                     </div>
                 )}
-            </div>
-        </div>
+            </PopoverContent>
+        </Popover>
     )
 }

@@ -39,7 +39,7 @@ function CreateWorkspace({ onCreate }: { onCreate: () => void }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="outline"><Plus />Create New Workspace</Button>
+                <Button><Plus />Create New Workspace</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
