@@ -1,7 +1,7 @@
 import { Crown } from "lucide-react"
-import { Button } from "./ui/button"
-import { useSidebar } from "./ui/sidebar"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
+import { Button } from "../ui/button"
+import { useSidebar } from "../ui/sidebar"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
 
 function UpgradeCard({ isIconMode, className }: { isIconMode?: boolean, className?: string }) {
     const { state } = useSidebar()

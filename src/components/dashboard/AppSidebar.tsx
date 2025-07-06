@@ -18,6 +18,12 @@ import {
   Crown,
   Palette,
   Settings,
+  LucideProps,
+  Settings2Icon,
+  UserRound,
+  Wrench,
+  Bell,
+  MonitorCog,
 } from "lucide-react";
 import { SidebarMode } from "@/contexts/ThemeContext";
 import Header from "./layout/sidebar/Header";
@@ -31,11 +37,22 @@ interface SidebarProps {
 }
 
 export interface ItenInterface {
-  icon: React.ElementType;
-  label: string;
-  active?: boolean;
+  icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
+  url?: string;
+  label?: string;
   badge?: string;
-  url?: string
+  title?: string;
+  active?: boolean;
+}
+
+export interface OtherItem {
+  label: string;
+  items: {
+    items: ItenInterface[];
+    label: string;
+    icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
+    url?: string;
+  }[];
 }
 
 const AppSidebar: React.FC<SidebarProps> = ({
@@ -46,15 +63,49 @@ const AppSidebar: React.FC<SidebarProps> = ({
 
   const menuItems = [
     { icon: BarChart3, url: "/", label: "Website Analytics" },
-    { icon: ShoppingCart, url: "/o", label: "E-commerce" },
-    { icon: DollarSign, url: "#", label: "Sales" },
-    { icon: Users, url: "#", label: "CRM" },
+    { icon: ShoppingCart, url: "/test", label: "E-commerce" },
+    { icon: DollarSign, url: "login", label: "Sales" },
     { icon: FolderOpen, url: "#", label: "Project Management" },
-    { icon: FileText, url: "#", label: "File Manager" },
-    { icon: Bitcoin, url: "#", label: "Crypto" },
-    { icon: GraduationCap, url: "#", label: "Academy/School" },
-    { icon: Building2, url: "#", label: "Hospital Management" },
-    { icon: Hotel, url: "#", label: "Hotel Dashboard", badge: "Coming" },
+    { icon: FileText, url: "/create-datasets", label: "Create Datasets" },
+  ]
+
+  const otherItems = [
+    {
+      label: 'Other',
+      items: [
+        {
+          label: 'Settings',
+          icon: Settings2Icon,
+          items: [
+            {
+              label: 'Profile',
+              url: '/settings',
+              icon: UserRound,
+            },
+            {
+              label: 'Account',
+              url: '/settings/account',
+              icon: Wrench,
+            },
+            {
+              label: 'Appearance',
+              url: '/settings/appearance',
+              icon: Palette,
+            },
+            {
+              label: 'Notifications',
+              url: '/settings/notifications',
+              icon: Bell,
+            },
+            {
+              label: 'Display',
+              url: '/settings/display',
+              icon: MonitorCog,
+            },
+          ],
+        }
+      ],
+    },
   ]
 
   const appItems = [
@@ -76,7 +127,7 @@ const AppSidebar: React.FC<SidebarProps> = ({
 
       {/* Menu */}
       <SidebarMenu className="flex-1 overflow-y-auto border-b border-t border-border -mt-4 bg-background">
-        <Menu appItems={appItems} isIconMode={isIconMode} menuItems={menuItems} />
+        <Menu appItems={appItems} isIconMode={isIconMode} menuItems={menuItems} otherItems={otherItems} />
       </SidebarMenu>
 
       {/* Footer */}
