@@ -58,6 +58,7 @@ export interface OtherItem {
 const AppSidebar: React.FC<SidebarProps> = ({
   onThemeToggle,
   sidebarMode,
+  ...props
 }) => {
   const isIconMode = sidebarMode === "icon";
 
@@ -108,6 +109,10 @@ const AppSidebar: React.FC<SidebarProps> = ({
     },
   ]
 
+  const data = {
+    versions: ["Stable", "Bita"]
+  }
+
   const appItems = [
     { icon: Trello, url: "#", label: "Kanban", badge: "Coming" },
     { icon: Bot, url: "#", label: "AI Chat", badge: "New" },
@@ -118,16 +123,24 @@ const AppSidebar: React.FC<SidebarProps> = ({
 
   return (
     <Sidebar
+      {...props}
       collapsible={isIconMode ? "none" : "icon"}
       className={`${isIconMode ? "w-16" : ""} h-screen border-r`}
     >
       <SidebarHeader className="bg-background">
-        <Header isIconMode={isIconMode} />
+        <Header
+          isIconMode={isIconMode}
+          versions={data.versions}
+          defaultVersion={data.versions[0]} />
       </SidebarHeader>
 
       {/* Menu */}
       <SidebarMenu className="flex-1 overflow-y-auto border-b border-t border-border -mt-4 bg-background">
-        <Menu appItems={appItems} isIconMode={isIconMode} menuItems={menuItems} otherItems={otherItems} />
+        <Menu
+          appItems={appItems}
+          isIconMode={isIconMode}
+          menuItems={menuItems}
+          otherItems={otherItems} />
       </SidebarMenu>
 
       {/* Footer */}
