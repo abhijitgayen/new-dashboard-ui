@@ -35,27 +35,29 @@ function CampingTrigar() {
         }
     ]
     return (
-        <div className="w-80 h-auto p-3 border ml-1.5 mb-4">
-            <div className="w-full flex justify-between items-center cursor-pointer">
-                <h2>Camping Trigar</h2>
-                <div className='flex items-center gap-3'>
-                    {/* <Search /> */}
-                    <ChevronDown
-                        onClick={() => handleOnClick()}
-                        className={`${open ? "" : "rotate-180"}`} />
+        <div className="w-full h-auto border mb-4">
+            <div className='p-3'>
+                <div className="w-full flex justify-between items-center cursor-pointer">
+                    <h2>Camping Trigar</h2>
+                    <div className='flex items-center gap-3'>
+                        {/* <Search /> */}
+                        <ChevronDown
+                            onClick={() => handleOnClick()}
+                            className={`${open ? "" : "rotate-180"}`} />
+                    </div>
                 </div>
-            </div>
-            <div className={`${open ? "block mt-3" : "hidden"}`}>
-                <div className="flex flex-col gap-4 mt-4">
-                    {
-                        data.map((item) => (
-                            <div key={item.id} className="flex items-center gap-3">
-                                <Checkbox id={item.id} defaultChecked={item.defaultChecked} />
-                                <Label htmlFor={item.id}>{item.label}</Label>
-                            </div>
-                        ))
-                    }
-                </div >
+                <div className={`${open ? "block mt-3" : "hidden"}`}>
+                    <div className="flex flex-col gap-4 mt-4">
+                        {
+                            data.map((item) => (
+                                <div key={item.id} className="flex items-center gap-3">
+                                    <Checkbox id={item.id} defaultChecked={item.defaultChecked} />
+                                    <Label htmlFor={item.id}>{item.label}</Label>
+                                </div>
+                            ))
+                        }
+                    </div >
+                </div>
             </div>
         </div>
     )
