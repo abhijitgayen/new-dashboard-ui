@@ -30,6 +30,7 @@ import Header from "./layout/sidebar/Header";
 import Menu from "./layout/sidebar/Menu";
 import Footer from "./layout/sidebar/Footer";
 import { Sidebar, SidebarFooter, SidebarHeader, SidebarMenu } from "../ui/sidebar";
+import { Version } from "@/hooks/useVersion";
 
 interface SidebarProps {
   onThemeToggle: () => void;
@@ -43,6 +44,7 @@ export interface ItenInterface {
   badge?: string;
   title?: string;
   active?: boolean;
+  version?: Version
 }
 
 export interface OtherItem {
@@ -62,10 +64,10 @@ const AppSidebar: React.FC<SidebarProps> = ({
 }) => {
   const isIconMode = sidebarMode === "icon";
 
-  const menuItems = [
+  const menuItems: ItenInterface[] = [
     { icon: BarChart3, url: "/", label: "Website Analytics" },
     { icon: ShoppingCart, url: "/test", label: "E-commerce" },
-    { icon: DollarSign, url: "login", label: "Sales" },
+    { icon: DollarSign, url: "login", label: "Sales", version: "Bita" },
     { icon: FolderOpen, url: "#", label: "Project Management" },
     { icon: FileText, url: "/create-datasets", label: "Create Datasets" },
   ]
@@ -113,12 +115,12 @@ const AppSidebar: React.FC<SidebarProps> = ({
     versions: ["Stable", "Bita"]
   }
 
-  const appItems = [
-    { icon: Trello, url: "#", label: "Kanban", badge: "Coming" },
-    { icon: Bot, url: "#", label: "AI Chat", badge: "New" },
-    { icon: FileText, url: "#", label: "Notes" },
-    { icon: MessageCircle, url: "#", label: "Chats", badge: "4" },
-    { icon: Mail, url: "#", label: "Mail", badge: "Coming" },
+  const appItems: ItenInterface[] = [
+    { icon: Trello, url: "#", label: "Kanban", badge: "Coming", version: "Bita" },
+    { icon: Bot, url: "#", label: "AI Chat", badge: "New", version: "Bita" },
+    { icon: MessageCircle, url: "#", label: "Chats", badge: "4", version: "Stable" },
+    { icon: FileText, url: "#", label: "Notes", version: "Stable" },
+    { icon: Mail, url: "#", label: "Mail", badge: "Coming", version: "Bita" },
   ]
 
   return (

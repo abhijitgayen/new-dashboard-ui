@@ -17,9 +17,9 @@ function Footer({ isIconMode }: { isIconMode: boolean }) {
                 <SidebarMenuItem > */}
             <Sheet>
                 <SheetTrigger asChild>
-                    <SidebarMenuButton className={`h-10 w-full items-center justify-center ${isIconMode ? "items-center justify-center h-8 w-8 ml-2" : ""}`} variant="outline">
-                        <Palette />
-                        <div className={`${isCollapsed ? "hidden" : ""}`}>
+                    <SidebarMenuButton className={`h-10 w-full flex items-center justify-center ${isCollapsed ? "" : ""} ${isIconMode ? "items-center justify-center h-8 w-8 ml-2" : ""}`} variant={(isCollapsed || isIconMode) ? "default" : "outline"}>
+                        <Palette className={`${isIconMode ? "ml-2" : ""} ${isCollapsed ? "ml-2" : ""} `} />
+                        <div className={`truncate`}>
                             {!isIconMode && <div className="translate-middle duration-1000">Theme Settings</div>}
                         </div>
                     </SidebarMenuButton>
