@@ -18,6 +18,8 @@ function Header({
   const isCollapsed = state === "collapsed"
   const { setVersion } = useVersion()
 
+
+
   useEffect(() => {
     setVersion(selectedVersion as unknown as Version)
   }, [selectedVersion, setVersion])
@@ -28,7 +30,7 @@ function Header({
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <SidebarMenuButton size="lg" className={`bg-transparent gap-6  ${isIconMode ? "hover:bg-transparent" : ""} cursor-default ${!isCollapsed ? '-mt-4' : '-mt-4'}`}>
+            <SidebarMenuButton size="lg" className={`bg-transparent gap-6 hover:bg-transparent  ${isIconMode ? "hover:bg-transparent" : ""} cursor-default ${!isCollapsed ? '-mt-4' : '-mt-4'}`}>
               <div className='flex items-center justify-center gap-2'>
                 <div className={`flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/60 text-sidebar-primary-foreground ${isIconMode ? "" : ""}`}>
                   <BarChart3 className="w-5 h-5 text-white" />

@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState, useContext, createContext, ReactNode } from "react"
 
-export type Version = "Stable" | "Bita"
+export type Version = "Stable" | "Bita" | "Dev"
 
 interface VersionContextType {
     version: Version
@@ -9,7 +9,7 @@ interface VersionContextType {
     features: {
         isStable: boolean
         isBita: boolean
-        // Add more feature flags as needed
+        isDev: boolean
     }
 }
 
@@ -20,7 +20,6 @@ export function VersionProvider({ children }: { children: ReactNode }) {
         return (localStorage.getItem("app_version") as Version) || "Stable"
     })
 
-    // Persist version selection
     const handleSetVersion = (v: Version) => {
         setVersion(v)
         localStorage.setItem("app_version", v)
@@ -29,7 +28,7 @@ export function VersionProvider({ children }: { children: ReactNode }) {
     const features = {
         isStable: version === "Stable",
         isBita: version === "Bita",
-        // You can add more flags here for fine-grained control
+        isDev: version === "Dev"
     }
 
     return (

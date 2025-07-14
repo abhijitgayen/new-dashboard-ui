@@ -22,6 +22,7 @@ function Menu({
     const isCollapsed = state === "collapsed"
     const { features } = useVersion()
 
+    console.log(features);
 
 
     return (
@@ -63,8 +64,8 @@ function Menu({
                                 {!isIconMode && item.badge && (
                                     <SidebarMenuBadge>
                                         <Badge
-                                            variant={item.badge === "New" ? "default" : "secondary"}
-                                            className="text-xs px-2 py-1 bg-orange-500 text-white rounded-full"
+                                            variant={item.badge === "Bita" ? "secondary" : "secondary"}
+                                            className="text-xs"
                                         >
                                             {item.badge}
                                         </Badge>
@@ -105,7 +106,7 @@ function Menu({
                                 {!isIconMode && item.badge && (
                                     <SidebarMenuBadge>
                                         <Badge
-                                            variant={item.badge === "New" ? "default" : item.badge === "Coming" ? "secondary" : "destructive"}
+                                            variant={item.badge === "Bita" ? "secondary" : item.badge === "Coming" ? "secondary" : "destructive"}
                                             className="text-xs"
                                         >
                                             {item.badge}
