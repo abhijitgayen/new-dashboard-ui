@@ -37,11 +37,13 @@ interface SidebarProps {
   sidebarMode: SidebarMode;
 }
 
+export type Badge = "Bita" | "Stable" | "Dev"
+
 export interface ItenInterface {
   icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
   url?: string;
   label?: string;
-  badge?: string;
+  badge?: Badge | string;
   title?: string;
   active?: boolean;
   version?: Version
@@ -67,7 +69,7 @@ const AppSidebar: React.FC<SidebarProps> = ({
   const menuItems: ItenInterface[] = [
     { icon: BarChart3, url: "/", label: "Website Analytics" },
     { icon: ShoppingCart, url: "/test", label: "E-commerce" },
-    { icon: DollarSign, url: "#", label: "Sales", version: "Bita", badge: "Bita" },
+    { icon: DollarSign, url: "#", label: "Sales", version: "Bita", badge: "Bita" as Badge },
     { icon: FolderOpen, url: "#", label: "Project Management" },
     { icon: FileText, url: "/create-datasets", label: "Create Datasets" },
   ]
@@ -116,11 +118,11 @@ const AppSidebar: React.FC<SidebarProps> = ({
   }
 
   const appItems: ItenInterface[] = [
-    { icon: Trello, url: "#", label: "Kanban", badge: "Bita", version: "Bita" },
-    { icon: Bot, url: "#", label: "AI Chat", badge: "Bita", version: "Bita" },
+    { icon: Trello, url: "#", label: "Kanban", badge: "Bita" as Badge, version: "Bita" },
+    { icon: Bot, url: "#", label: "AI Chat", badge: "Bita" as Badge, version: "Bita" },
     { icon: MessageCircle, url: "#", label: "Chats", badge: "4", version: "Stable" },
     { icon: FileText, url: "#", label: "Notes", version: "Stable" },
-    { icon: Mail, url: "#", label: "Mail", badge: "Bita", version: "Bita" },
+    { icon: Mail, url: "#", label: "Mail", badge: "Bita" as Badge, version: "Bita" },
   ]
 
   return (
