@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboardlayout from "./components/dashboard/layout/Dashboardlayout";
 import AnalyticsWidgets from "@/components/dashboard/AnalyticsWidgets";
 import NotFound from "./pages/NotFound";
-import Test from "./components/dashboard/Test";
+
 import Index from "./components/createDatasets/Index";
 import LoginPage from "./components/auth/LoginForm";
 import RegisterPage from "./components/auth/Register";
@@ -94,7 +94,6 @@ const App = () => (
                 <Route path="display" element={<SettingsDisplay />} />
               </Route>
               <Route index element={<AnalyticsWidgets />} />
-              <Route path="/test" element={<Test />} />
               <Route path="/create-datasets" element={<Index />} />
             </Route>
             <Route path="*" element={<NotFound />} />

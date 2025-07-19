@@ -11,12 +11,12 @@ function Menu({
     isIconMode,
     menuItems,
     appItems,
-    otherItems
+    otherItems,
 }: {
     isIconMode: boolean,
     menuItems: ItenInterface[],
     appItems: ItenInterface[],
-    otherItems: OtherItem[]
+    otherItems: OtherItem[],
 }) {
     const { state } = useSidebar()
     const isCollapsed = state === "collapsed"
@@ -36,14 +36,6 @@ function Menu({
                 )}
                 <SidebarMenu>
                     {menuItems
-                        ?.filter(item => {
-                            // Only show items with version !== "Bita" in Stable mode
-                            // Show all items in Bita mode
-                            if (features.isStable) {
-                                return item.version !== "Bita"
-                            }
-                            return true
-                        })
                         .map((item) => (
                             <SidebarMenuItem
                                 className={`flex items-center ${isIconMode ? "justify-center mx-2" : "justify-between"} rounded-lg cursor-pointer transition-colors ${item.active
@@ -64,7 +56,7 @@ function Menu({
                                 {!isIconMode && item.badge && (
                                     <SidebarMenuBadge>
                                         <Badge
-                                            variant={item.badge === "Bita" ? "secondary" : "secondary"}
+                                            variant={item.badge === "Beta" ? "secondary" : "secondary"}
                                             className="text-xs"
                                         >
                                             {item.badge}
@@ -84,10 +76,7 @@ function Menu({
                 <SidebarMenu>
                     {appItems
                         ?.filter(item => {
-                            if (features.isStable) {
-                                return item.version !== "Bita"
-                            }
-                            return true
+                            return item.version !== "Beta"
                         })
                         .map((item) => (
                             <SidebarMenuItem
@@ -106,7 +95,7 @@ function Menu({
                                 {!isIconMode && item.badge && (
                                     <SidebarMenuBadge>
                                         <Badge
-                                            variant={item.badge === "Bita" ? "secondary" : item.badge === "Coming" ? "secondary" : "destructive"}
+                                            variant={item.badge === "Beta" ? "secondary" : item.badge === "Coming" ? "secondary" : "destructive"}
                                             className="text-xs"
                                         >
                                             {item.badge}
@@ -117,6 +106,47 @@ function Menu({
                         ))}
                 </SidebarMenu>
             </SidebarGroup>
+
+
+             {/* Apps Section */}
+            {(features.isBeta || features.isDev) && (
+            <SidebarGroup>
+                {!isIconMode && (
+                    <SidebarGroupLabel className="uppercase text-slate-400">Beta Apps</SidebarGroupLabel>
+                )}
+                <SidebarMenu>
+                    {appItems
+                        ?.filter(item => {
+                            return item.version === "Beta"
+                        })
+                        .map((item) => (
+                            <SidebarMenuItem
+                                className={`flex items-center ${isIconMode ? "justify-center mx-2" : "justify-between"} rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accet/50`}
+                                title={isIconMode ? item.label : undefined}
+                                key={item.label}
+                            >
+                                <SidebarMenuButton asChild className="h-full">
+                                    <Link to={item.url}>
+                                        <item.icon className="w-4 h-4" />
+                                        {!isIconMode && (
+                                            <span className="text-sm font-medium w-full ml-1">{item.label}</span>
+                                        )}
+                                    </Link>
+                                </SidebarMenuButton>
+                                {!isIconMode && item.badge && (
+                                    <SidebarMenuBadge>
+                                        <Badge
+                                            variant={item.badge === "Beta" ? "secondary" : item.badge === "Coming" ? "secondary" : "destructive"}
+                                            className="text-xs"
+                                        >
+                                            {item.badge}
+                                        </Badge>
+                                    </SidebarMenuBadge>
+                                )}
+                            </SidebarMenuItem>
+                        ))}
+                </SidebarMenu>
+            </SidebarGroup>)}
 
             {/* Other Settings Section */}
             <OthersSettings

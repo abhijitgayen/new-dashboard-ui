@@ -3,6 +3,7 @@ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/c
 import { BarChart3, Check, ChevronsUpDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useVersion, Version } from "@/hooks/useVersion"
+import { APP_NAME } from '@/config/app'
 
 function Header({
   versions,
@@ -18,12 +19,9 @@ function Header({
   const isCollapsed = state === "collapsed"
   const { setVersion } = useVersion()
 
-
-
   useEffect(() => {
     setVersion(selectedVersion as unknown as Version)
   }, [selectedVersion, setVersion])
-
 
   return (
     <SidebarMenu className={`h-[55px] justify-center ${!isCollapsed ? "items-center" : ""}`}>
@@ -31,12 +29,12 @@ function Header({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton size="lg" className={`bg-transparent gap-6 hover:bg-transparent  ${isIconMode ? "hover:bg-transparent" : ""} cursor-default ${!isCollapsed ? '-mt-4' : '-mt-4'}`}>
-              <div className='flex items-center justify-center gap-2'>
+              <div className='flex items-center justify-center gap-3'>
                 <div className={`flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/60 text-sidebar-primary-foreground ${isIconMode ? "" : ""}`}>
                   <BarChart3 className="w-5 h-5 text-white" />
                 </div>
                 <div className="grid flex-1 gap-0.5 text-left text-sm leading-tight">
-                  <span className="truncate text-foreground font-semibold">Shadcn UI Kit</span>
+                  <span className="truncate text-foreground font-semibold">{APP_NAME}</span>
                   <span className="truncate text-xs">{selectedVersion}</span>
                 </div>
               </div>

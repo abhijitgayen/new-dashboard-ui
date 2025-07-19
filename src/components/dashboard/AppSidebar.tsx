@@ -37,7 +37,7 @@ interface SidebarProps {
   sidebarMode: SidebarMode;
 }
 
-export type Badge = "Bita" | "Stable" | "Dev"
+export type Badge = "Beta" | "Stable" | "Dev"
 
 export interface ItenInterface {
   icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
@@ -68,8 +68,8 @@ const AppSidebar: React.FC<SidebarProps> = ({
 
   const menuItems: ItenInterface[] = [
     { icon: BarChart3, url: "/", label: "Website Analytics" },
-    { icon: ShoppingCart, url: "/test", label: "E-commerce" },
-    { icon: DollarSign, url: "#", label: "Sales", version: "Bita", badge: "Bita" as Badge },
+    { icon: ShoppingCart, url: "#", label: "E-commerce" },
+    { icon: DollarSign, url: "#", label: "Sales" },
     { icon: FolderOpen, url: "#", label: "Project Management" },
     { icon: FileText, url: "/create-datasets", label: "Create Datasets" },
   ]
@@ -114,15 +114,16 @@ const AppSidebar: React.FC<SidebarProps> = ({
   ]
 
   const data = {
-    versions: ["Stable", "Bita", "Dev"]
+    versions: ["Stable", "Beta", "Dev"]
   }
 
   const appItems: ItenInterface[] = [
-    { icon: Trello, url: "#", label: "Kanban", badge: "Bita" as Badge, version: "Bita" },
-    { icon: Bot, url: "#", label: "AI Chat", badge: "Bita" as Badge, version: "Bita" },
     { icon: MessageCircle, url: "#", label: "Chats", badge: "4", version: "Stable" },
     { icon: FileText, url: "#", label: "Notes", version: "Stable" },
-    { icon: Mail, url: "#", label: "Mail", badge: "Bita" as Badge, version: "Bita" },
+    { icon: Mail, url: "#", label: "Mail", version: "Stable" },
+    { icon: Building2, url: "#", label: "Company", badge: "Beta" as Badge, version: "Beta" },
+    { icon: Hotel, url: "#", label: "Hotel", badge: "Beta" as Badge, version: "Beta" },
+    { icon: Users, url: "#", label: "Users", badge: "Beta" as Badge, version: "Beta" },
   ]
 
   return (
@@ -144,7 +145,9 @@ const AppSidebar: React.FC<SidebarProps> = ({
           appItems={appItems}
           isIconMode={isIconMode}
           menuItems={menuItems}
-          otherItems={otherItems} />
+          otherItems={otherItems}
+          />
+          
       </SidebarMenu>
 
       {/* Footer */}

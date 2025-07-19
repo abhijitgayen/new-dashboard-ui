@@ -1,14 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState, useContext, createContext, ReactNode } from "react"
 
-export type Version = "Stable" | "Bita" | "Dev"
+export type Version = "Stable" | "Beta" | "Dev"
 
 interface VersionContextType {
     version: Version
     setVersion: (v: Version) => void
     features: {
         isStable: boolean
-        isBita: boolean
+        isBeta: boolean
         isDev: boolean
     }
 }
@@ -27,7 +27,7 @@ export function VersionProvider({ children }: { children: ReactNode }) {
 
     const features = {
         isStable: version === "Stable",
-        isBita: version === "Bita",
+        isBeta: version === "Beta",
         isDev: version === "Dev"
     }
 
