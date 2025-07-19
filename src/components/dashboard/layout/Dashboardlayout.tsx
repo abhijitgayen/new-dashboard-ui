@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import AppSidebar from "@/components/dashboard/AppSidebar";
 import { Outlet } from "react-router-dom";

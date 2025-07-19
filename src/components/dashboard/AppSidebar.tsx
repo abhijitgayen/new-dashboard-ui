@@ -5,19 +5,12 @@ import {
   DollarSign,
   Users,
   FolderOpen,
-  Bitcoin,
-  GraduationCap,
   Building2,
   Hotel,
-  MessageSquare,
-  Trello,
-  Bot,
   FileText,
   MessageCircle,
   Mail,
-  Crown,
   Palette,
-  Settings,
   LucideProps,
   Settings2Icon,
   UserRound,
@@ -146,8 +139,8 @@ const AppSidebar: React.FC<SidebarProps> = ({
           isIconMode={isIconMode}
           menuItems={menuItems}
           otherItems={otherItems}
-          />
-          
+        />
+
       </SidebarMenu>
 
       {/* Footer */}

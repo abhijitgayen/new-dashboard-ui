@@ -24,16 +24,16 @@ function Header() {
         {
             icon: Share
         },
-        // {
-        //     icon: TriangleAlert,
-        //     notifiction: ""
-        // },
-        // {
-        //     icon: Wrench,
-        // },
-        // {
-        //     icon: User
-        // }
+        {
+            icon: TriangleAlert,
+            notifiction: ""
+        },
+        {
+            icon: Wrench,
+        },
+        {
+            icon: User
+        }
     ]
 
     return (

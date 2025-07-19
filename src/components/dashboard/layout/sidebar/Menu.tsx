@@ -1,9 +1,7 @@
-import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, useSidebar } from "@/components/ui/sidebar"
+import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
 import type { ItenInterface, OtherItem } from "../../AppSidebar"
 import { Badge } from "@/components/ui/badge"
 import { Link } from "react-router-dom"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { ChevronRight } from "lucide-react"
 import OthersSettings from "./OthersSettings"
 import { useVersion } from "@/hooks/useVersion"
 
@@ -108,45 +106,45 @@ function Menu({
             </SidebarGroup>
 
 
-             {/* Apps Section */}
+            {/* Apps Section */}
             {(features.isBeta || features.isDev) && (
-            <SidebarGroup>
-                {!isIconMode && (
-                    <SidebarGroupLabel className="uppercase text-slate-400">Beta Apps</SidebarGroupLabel>
-                )}
-                <SidebarMenu>
-                    {appItems
-                        ?.filter(item => {
-                            return item.version === "Beta"
-                        })
-                        .map((item) => (
-                            <SidebarMenuItem
-                                className={`flex items-center ${isIconMode ? "justify-center mx-2" : "justify-between"} rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accet/50`}
-                                title={isIconMode ? item.label : undefined}
-                                key={item.label}
-                            >
-                                <SidebarMenuButton asChild className="h-full">
-                                    <Link to={item.url}>
-                                        <item.icon className="w-4 h-4" />
-                                        {!isIconMode && (
-                                            <span className="text-sm font-medium w-full ml-1">{item.label}</span>
-                                        )}
-                                    </Link>
-                                </SidebarMenuButton>
-                                {!isIconMode && item.badge && (
-                                    <SidebarMenuBadge>
-                                        <Badge
-                                            variant={item.badge === "Beta" ? "secondary" : item.badge === "Coming" ? "secondary" : "destructive"}
-                                            className="text-xs"
-                                        >
-                                            {item.badge}
-                                        </Badge>
-                                    </SidebarMenuBadge>
-                                )}
-                            </SidebarMenuItem>
-                        ))}
-                </SidebarMenu>
-            </SidebarGroup>)}
+                <SidebarGroup>
+                    {!isIconMode && (
+                        <SidebarGroupLabel className="uppercase text-slate-400">Beta Apps</SidebarGroupLabel>
+                    )}
+                    <SidebarMenu>
+                        {appItems
+                            ?.filter(item => {
+                                return item.version === "Beta"
+                            })
+                            .map((item) => (
+                                <SidebarMenuItem
+                                    className={`flex items-center ${isIconMode ? "justify-center mx-2" : "justify-between"} rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accet/50`}
+                                    title={isIconMode ? item.label : undefined}
+                                    key={item.label}
+                                >
+                                    <SidebarMenuButton asChild className="h-full">
+                                        <Link to={item.url}>
+                                            <item.icon className="w-4 h-4" />
+                                            {!isIconMode && (
+                                                <span className="text-sm font-medium w-full ml-1">{item.label}</span>
+                                            )}
+                                        </Link>
+                                    </SidebarMenuButton>
+                                    {!isIconMode && item.badge && (
+                                        <SidebarMenuBadge>
+                                            <Badge
+                                                variant={item.badge === "Beta" ? "secondary" : item.badge === "Coming" ? "secondary" : "destructive"}
+                                                className="text-xs"
+                                            >
+                                                {item.badge}
+                                            </Badge>
+                                        </SidebarMenuBadge>
+                                    )}
+                                </SidebarMenuItem>
+                            ))}
+                    </SidebarMenu>
+                </SidebarGroup>)}
 
             {/* Other Settings Section */}
             <OthersSettings

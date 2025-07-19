@@ -21,25 +21,18 @@ const ThemePanel = () => {
 
       <Scale updateSettings={updateSettings} settings={settings} />
 
-      {/* Radius */}
       <Radius settings={settings} updateSettings={updateSettings} />
 
-      {/* Color Mode */}
       <ColorMode settings={settings} updateSettings={updateSettings} />
 
-      {/* Content Layout */}
       <ContentLayout settings={settings} updateSettings={updateSettings} />
 
-      {/* Sidebar Mode */}
       <SidebarMode settings={settings} updateSettings={updateSettings} />
 
-      {/* Font Family */}
       <FontFamily settings={settings} updateSettings={updateSettings} />
 
-      {/* Color Palette with enhanced styling */}
       <ColorPalette settings={settings} updateSettings={updateSettings} />
 
-      {/* Action Buttons with modern styling */}
       <div className="space-y-2">
         <Button
           variant="outline"
