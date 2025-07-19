@@ -1,12 +1,10 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboardlayout from "./components/dashboard/layout/Dashboardlayout";
 import AnalyticsWidgets from "@/components/dashboard/AnalyticsWidgets";
 import NotFound from "./pages/NotFound";
-
 import Index from "./components/createDatasets/Index";
 import LoginPage from "./components/auth/LoginForm";
 import RegisterPage from "./components/auth/Register";
@@ -14,67 +12,13 @@ import ForgotPassword from "./components/auth/ForgotPassword";
 import Settings from "./components/settings";
 import SettingsAccount from "./components/settings/account";
 import SettingsProfile from "./components/settings/profile";
-import { StrictMode } from 'react'
-import ReactDOM from 'react-dom/client'
-import { AxiosError } from 'axios'
-import { toast } from 'sonner'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import SettingsAppearance from "./components/settings/appearance";
 import SettingsNotifications from "./components/settings/notifications";
 import SettingsDisplay from "./components/settings/display";
 import { VersionProvider } from "@/hooks/useVersion"
 
-// const queryClient = new QueryClient({
-//   defaultOptions: {
-//     queries: {
-//       retry: (failureCount, error) => {
-//         // eslint-disable-next-line no-console
-//         if (import.meta.env.DEV) console.log({ failureCount, error })
-
-//         if (failureCount >= 0 && import.meta.env.DEV) return false
-//         if (failureCount > 3 && import.meta.env.PROD) return false
-
-//         return !(
-//           error instanceof AxiosError &&
-//           [401, 403].includes(error.response?.status ?? 0)
-//         )
-//       },
-//       refetchOnWindowFocus: import.meta.env.PROD,
-//       staleTime: 10 * 1000, // 10s
-//     },
-//     mutations: {
-//       onError: (error) => {
-
-//         if (error instanceof AxiosError) {
-//           if (error.response?.status === 304) {
-//             toast.error('Content not modified!')
-//           }
-//         }
-//       },
-//     },
-//   },
-//   queryCache: new QueryCache({
-//     onError: (error) => {
-//       if (error instanceof AxiosError) {
-//         if (error.response?.status === 401) {
-//           toast.error('Session expired!')
-//         }
-//         if (error.response?.status === 500) {
-//           toast.error('Internal Server Error!')
-//         }
-//         if (error.response?.status === 403) {
-//           // router.navigate("/forbidden", { replace: true });
-//         }
-//       }
-//     },
-//   }),
-// })
-
-const queryClient = new QueryClient();
-
-
 const App = () => (
-  // <QueryClientProvider client={queryClient}>
   <ThemeProvider>
     <VersionProvider>
       <TooltipProvider>
@@ -102,7 +46,6 @@ const App = () => (
       </TooltipProvider>
     </VersionProvider>
   </ThemeProvider>
-  // </QueryClientProvider>
 );
 
 export default App;
