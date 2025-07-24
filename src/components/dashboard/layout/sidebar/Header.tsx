@@ -54,6 +54,7 @@ function Header({
               <DropdownMenuItem
                 key={version}
                 onSelect={() => setSelectedVersion(version)}
+                defaultValue={localStorage.getItem("app_version")}
               >
                 {version}{" "}
                 {version === selectedVersion && <Check className="ml-auto" />}

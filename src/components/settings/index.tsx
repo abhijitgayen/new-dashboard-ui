@@ -63,5 +63,5 @@ const sidebarNavItems = [
     title: 'Display',
     icon: <IconBrowserCheck size={18} />,
     href: '/settings/display',
-  },
+  }
 ]

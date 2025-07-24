@@ -81,7 +81,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [settings, setSettings] = useState<ThemeSettings>(defaultSettings);
 
+
   const updateSettings = (newSettings: Partial<ThemeSettings>) => {
+    localStorage.setItem("theme_panel", JSON.stringify(settings))
     setSettings((prev) => ({ ...prev, ...newSettings }));
   };
 

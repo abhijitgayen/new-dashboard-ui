@@ -12,6 +12,8 @@ import ColorPalette from "../settings/appearance/ColorPalette";
 
 const ThemePanel = () => {
   const { settings, updateSettings, resetToDefault } = useTheme();
+  const storeSetting = JSON.parse(localStorage.getItem("theme_panel"))
+
 
   return (
     <SheetContent className="overflow-y-auto max-h-screen p-6 bg-background border-l border-border/50 glass-effect w-80">
@@ -19,19 +21,19 @@ const ThemePanel = () => {
         <SheetTitle className="text-lg font-semibold accent-text">Theme panel</SheetTitle>
       </SheetHeader>
 
-      <Scale updateSettings={updateSettings} settings={settings} />
+      <Scale updateSettings={updateSettings} settings={storeSetting} />
 
-      <Radius settings={settings} updateSettings={updateSettings} />
+      <Radius settings={storeSetting} updateSettings={updateSettings} />
 
-      <ColorMode settings={settings} updateSettings={updateSettings} />
+      <ColorMode settings={storeSetting} updateSettings={updateSettings} />
 
-      <ContentLayout settings={settings} updateSettings={updateSettings} />
+      <ContentLayout settings={storeSetting} updateSettings={updateSettings} />
 
-      <SidebarMode settings={settings} updateSettings={updateSettings} />
+      <SidebarMode settings={storeSetting} updateSettings={updateSettings} />
 
-      <FontFamily settings={settings} updateSettings={updateSettings} />
+      <FontFamily settings={storeSetting} updateSettings={updateSettings} />
 
-      <ColorPalette settings={settings} updateSettings={updateSettings} />
+      {/* <ColorPalette settings={storeSetting} updateSettings={updateSettings} /> */}
 
       <div className="space-y-2">
         <Button

@@ -17,7 +17,7 @@ const VersionContext = createContext<VersionContextType | undefined>(undefined)
 
 export function VersionProvider({ children }: { children: ReactNode }) {
     const [version, setVersion] = useState<Version>(() => {
-        return (localStorage.getItem("app_version") as Version) || "Stable"
+        return (localStorage.getItem("app_version") as Version)
     })
 
     const handleSetVersion = (v: Version) => {

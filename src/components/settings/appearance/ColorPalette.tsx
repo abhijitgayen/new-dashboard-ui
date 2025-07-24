@@ -11,17 +11,17 @@ const colorOptions = [
 
 function ColorPalette({ settings, updateSettings }) {
     return (
-        <div className="mb-6">
-            <Label className="text-sm font-medium mb-2 block accent-text">
-                Colors:
+        <div className="mb-6 mt-6" >
+            <Label className="text-sm font-medium mb-2 block">
+                Colors
             </Label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-4 gap-2">
                 {colorOptions.map((color) => (
                     <button
                         key={color.value}
                         onClick={() => updateSettings({ accentColor: color.value })}
-                        className={`w-full h-10 rounded-lg border-2 transition-all duration-300 hover:scale-110 hover:shadow-lg ${settings.accentColor === color.value
-                            ? "border-foreground scale-105 accent-glow"
+                        className={`w-full h-16 rounded-lg border-2 transition-all duration-300 hover:shadow-lg ${settings.accentColor === color.value
+                            ? "border-foreground accent-glow"
                             : "border-border/50 hover:border-muted-foreground"
                             }`}
                         style={{ backgroundColor: color.value }}

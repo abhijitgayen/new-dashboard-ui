@@ -36,6 +36,7 @@ const App = () => (
                 <Route path="appearance" element={<SettingsAppearance />} />
                 <Route path="notifications" element={<SettingsNotifications />} />
                 <Route path="display" element={<SettingsDisplay />} />
+                {/* <Route path="thime" element={<Theme />} /> */}
               </Route>
               <Route index element={<AnalyticsWidgets />} />
               <Route path="/create-datasets" element={<Index />} />

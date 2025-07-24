@@ -20,7 +20,7 @@ function Menu({
     const isCollapsed = state === "collapsed"
     const { features } = useVersion()
 
-    console.log(features);
+    // console.log(features);
 
 
     return (
