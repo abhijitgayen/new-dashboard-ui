@@ -18,7 +18,7 @@ function SidebarMode({ settings, updateSettings }) {
                     onClick={() =>
                         updateSettings({ sidebarMode: "default" as SidebarMode })
                     }
-                    className="flex-1 hover-accent"
+                    className="flex-1"
                     style={
                         {
                             backgroundColor:
@@ -39,7 +39,7 @@ function SidebarMode({ settings, updateSettings }) {
                     onClick={() =>
                         updateSettings({ sidebarMode: "icon" as SidebarMode })
                     }
-                    className="flex-1 hover-accent"
+                    className="flex-1"
                     style={
                         {
                             backgroundColor:

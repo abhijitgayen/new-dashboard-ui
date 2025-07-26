@@ -17,7 +17,7 @@ function ContentLayout({ settings, updateSettings }) {
                     onClick={() =>
                         updateSettings({ contentLayout: "full" as ContentLayout })
                     }
-                    className="flex-1 hover-accent"
+                    className="flex-1"
                     style={
                         {
                             backgroundColor:
@@ -38,7 +38,7 @@ function ContentLayout({ settings, updateSettings }) {
                     onClick={() =>
                         updateSettings({ contentLayout: "centered" as ContentLayout })
                     }
-                    className="flex-1 hover-accent"
+                    className="flex-1"
                     style={
                         {
                             backgroundColor:

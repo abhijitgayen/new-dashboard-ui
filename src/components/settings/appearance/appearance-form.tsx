@@ -14,8 +14,14 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import ThemePanel from '@/components/dashboard/ThemePanel'
+// import ThemePanel from '@/components/dashboard/ThemePanel'
 import ColorPalette from './ColorPalette'
+import Scale from './Scale'
+import Radius from './Radius'
+import ColorMode from './ColorMode'
+import ContentLayout from './ContentLayout'
+import SidebarMode from './SidebarMode'
+import FontFamily from './FontFamily'
 
 const appearanceFormSchema = z.object({
   theme: z.enum(['light', 'dark', 'dark-blue'], {
@@ -30,8 +36,9 @@ const appearanceFormSchema = z.object({
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
 
 export function AppearanceForm() {
+
   // const { font, setFont } = useFont()
-  const { settings, updateSettings } = useTheme()
+  const { settings, updateSettings, resetToDefault } = useTheme()
 
   // This can come from your database or API.
   const defaultValues: Partial<AppearanceFormValues> = {
@@ -54,6 +61,17 @@ export function AppearanceForm() {
   return (
     <>
       <ColorPalette settings={settings} updateSettings={updateSettings} />
+      <Scale updateSettings={updateSettings} settings={settings} />
+      <Radius settings={settings} updateSettings={updateSettings} />
+
+      <ColorMode settings={settings} updateSettings={updateSettings} />
+
+      <ContentLayout settings={settings} updateSettings={updateSettings} />
+
+      <SidebarMode settings={settings} updateSettings={updateSettings} />
+
+      <FontFamily settings={settings} updateSettings={updateSettings} />
+
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
@@ -156,6 +174,16 @@ export function AppearanceForm() {
           />
 
           <Button type='submit'>Update preferences</Button>
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={resetToDefault}
+            style={
+              { borderColor: "var(--accent-color)" } as React.CSSProperties
+            }
+          >
+            Reset to Default
+          </Button>
         </form>
       </Form>
     </>

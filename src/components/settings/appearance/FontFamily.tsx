@@ -9,7 +9,7 @@ function FontFamily({ settings, updateSettings }) {
             <Label className="text-sm font-medium mb-2 block accent-text">
                 Font:
             </Label>
-            <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3 items-center accent-text">
                 {[
                     { label: "Inter", value: "sans" as FontFamily },
                     { label: "JetBrains Mono", value: "mono" as FontFamily },
@@ -22,7 +22,7 @@ function FontFamily({ settings, updateSettings }) {
                         }
                         size="sm"
                         onClick={() => updateSettings({ fontFamily: font.value })}
-                        className="w-full justify-start hover-accent"
+                        className="w-full justify-center"
                         style={
                             {
                                 backgroundColor:

@@ -22,7 +22,7 @@ function Scale({ settings, updateSettings, }) {
                         }
                         size="sm"
                         onClick={() => updateSettings({ scale: scale.value })}
-                        className="px-3 hover-accent"
+                        className="px-3"
                         style={
                             {
                                 backgroundColor:

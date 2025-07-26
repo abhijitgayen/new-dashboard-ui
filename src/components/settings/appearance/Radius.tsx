@@ -23,7 +23,7 @@ function Radius({ settings, updateSettings }) {
                         }
                         size="sm"
                         onClick={() => updateSettings({ radius: radius.value })}
-                        className="px-3 hover-accent"
+                        className="px-3"
                         style={
                             {
                                 backgroundColor:

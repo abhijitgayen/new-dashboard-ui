@@ -133,7 +133,7 @@ const AppSidebar: React.FC<SidebarProps> = ({
       </SidebarHeader>
 
       {/* Menu */}
-      <SidebarMenu className="flex-1 overflow-y-auto border-b border-t border-border -mt-4 bg-background">
+      <SidebarMenu className="flex-1 overflow-y-auto border-t border-border -mt-4 bg-background">
         <Menu
           appItems={appItems}
           isIconMode={isIconMode}
@@ -144,9 +144,9 @@ const AppSidebar: React.FC<SidebarProps> = ({
       </SidebarMenu>
 
       {/* Footer */}
-      <SidebarFooter className="bg-background">
+      {/* <SidebarFooter className="bg-background">
         <Footer isIconMode={isIconMode} />
-      </SidebarFooter>
+      </SidebarFooter> */}
 
     </Sidebar>
   );

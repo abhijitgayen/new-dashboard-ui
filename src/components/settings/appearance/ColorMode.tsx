@@ -16,7 +16,7 @@ function ColorMode({ settings, updateSettings }) {
                     onClick={() =>
                         updateSettings({ colorMode: "light" as ColorMode })
                     }
-                    className="flex-1 hover-accent text-xs"
+                    className="flex-1 text-xs"
                     style={
                         {
                             backgroundColor:
@@ -35,7 +35,7 @@ function ColorMode({ settings, updateSettings }) {
                     onClick={() =>
                         updateSettings({ colorMode: "dark" as ColorMode })
                     }
-                    className="flex-1 hover-accent text-xs"
+                    className="flex-1 text-xs"
                     style={
                         {
                             backgroundColor:
@@ -56,7 +56,7 @@ function ColorMode({ settings, updateSettings }) {
                     onClick={() =>
                         updateSettings({ colorMode: "dark-blue" as ColorMode })
                     }
-                    className="flex-1 hover-accent text-xs"
+                    className="flex-1 text-xs"
                     style={
                         {
                             backgroundColor:
