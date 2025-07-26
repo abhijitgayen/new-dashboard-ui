@@ -1,7 +1,6 @@
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { SidebarMenuButton, useSidebar } from "@/components/ui/sidebar";
 import { Palette } from "lucide-react";
-import ThemePanel from "../../ThemePanel";
 
 function Footer({ isIconMode }: { isIconMode: boolean }) {
     const { state } = useSidebar()
@@ -17,7 +16,6 @@ function Footer({ isIconMode }: { isIconMode: boolean }) {
                         </div>
                     </SidebarMenuButton>
                 </SheetTrigger>
-                <ThemePanel />
             </Sheet>
         </div>
     )

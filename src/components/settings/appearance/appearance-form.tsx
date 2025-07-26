@@ -58,19 +58,22 @@ export function AppearanceForm() {
     showSubmittedData(localStorage.getItem("theme"))
   }
 
+  const storeSetting = JSON.parse(localStorage.getItem("theme_panel"))
+
+
   return (
     <>
-      <ColorPalette settings={settings} updateSettings={updateSettings} />
-      <Scale updateSettings={updateSettings} settings={settings} />
-      <Radius settings={settings} updateSettings={updateSettings} />
+      <ColorPalette settings={storeSetting} updateSettings={updateSettings} />
+      <Scale updateSettings={updateSettings} settings={storeSetting} />
+      <Radius settings={storeSetting} updateSettings={updateSettings} />
 
-      <ColorMode settings={settings} updateSettings={updateSettings} />
+      <ColorMode settings={storeSetting} updateSettings={updateSettings} />
 
-      <ContentLayout settings={settings} updateSettings={updateSettings} />
+      <ContentLayout settings={storeSetting} updateSettings={updateSettings} />
 
-      <SidebarMode settings={settings} updateSettings={updateSettings} />
+      <SidebarMode settings={storeSetting} updateSettings={updateSettings} />
 
-      <FontFamily settings={settings} updateSettings={updateSettings} />
+      <FontFamily settings={storeSetting} updateSettings={updateSettings} />
 
 
       <Form {...form}>

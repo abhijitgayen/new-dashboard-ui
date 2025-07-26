@@ -143,11 +143,6 @@ const AppSidebar: React.FC<SidebarProps> = ({
 
       </SidebarMenu>
 
-      {/* Footer */}
-      {/* <SidebarFooter className="bg-background">
-        <Footer isIconMode={isIconMode} />
-      </SidebarFooter> */}
-
     </Sidebar>
   );
 };
