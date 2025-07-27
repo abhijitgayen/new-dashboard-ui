@@ -1,23 +1,22 @@
-import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { SidebarMenuButton, useSidebar } from "@/components/ui/sidebar";
 import { Palette } from "lucide-react";
+import { Link } from "react-router-dom";
+import { SETTING_PAGE } from "@/config/app";
 
 function Footer({ isIconMode }: { isIconMode: boolean }) {
     const { state } = useSidebar()
     const isCollapsed = state === "collapsed"
     return (
-        <div className={`${!isCollapsed ? "px-2" : ""}`}>
-            <Sheet>
-                <SheetTrigger asChild>
-                    <SidebarMenuButton className={`h-10 w-full flex items-center justify-center ${isCollapsed ? "" : ""} ${isIconMode ? "items-center justify-center h-8 w-8 ml-2" : ""}`} variant={(isCollapsed || isIconMode) ? "default" : "outline"}>
-                        <Palette className={`${isIconMode ? "ml-2" : ""} ${isCollapsed ? "ml-2" : ""} `} />
-                        <div className={`truncate`}>
-                            {!isIconMode && <div className="translate-middle duration-1000">Theme Settings</div>}
-                        </div>
-                    </SidebarMenuButton>
-                </SheetTrigger>
-            </Sheet>
-        </div>
+        <Link to={SETTING_PAGE} className="flex items-center justify-center">
+            <SidebarMenuButton className={` ${!isIconMode ? 'w-full' : 'w-8 h-8'}  flex items-center justify-center`} variant={(isCollapsed || isIconMode) ? "default" : "outline"}>
+                <Palette className="w-4 h-4" />
+                {!isIconMode && (
+                    <div className={`truncate`}>
+                        <div className="translate-middle duration-1000">Theme Settings</div>
+                    </div>
+                )}
+            </SidebarMenuButton>
+        </Link>
     )
 }
 

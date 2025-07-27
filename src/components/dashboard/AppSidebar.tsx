@@ -18,12 +18,13 @@ import {
   Bell,
   MonitorCog,
 } from "lucide-react";
-import { SidebarMode } from "@/contexts/ThemeContext";
+
 import Header from "./layout/sidebar/Header";
 import Menu from "./layout/sidebar/Menu";
 import Footer from "./layout/sidebar/Footer";
 import { Sidebar, SidebarFooter, SidebarHeader, SidebarMenu } from "../ui/sidebar";
 import { Version } from "@/hooks/useVersion";
+import { SidebarMode } from "@/contexts/ThemeConfig";
 
 interface SidebarProps {
   onThemeToggle: () => void;
@@ -140,9 +141,11 @@ const AppSidebar: React.FC<SidebarProps> = ({
           menuItems={menuItems}
           otherItems={otherItems}
         />
-
       </SidebarMenu>
 
+      <SidebarFooter className="bg-background border-t border-border">
+        <Footer isIconMode={isIconMode} />
+      </SidebarFooter>
     </Sidebar>
   );
 };

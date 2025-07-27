@@ -20,9 +20,6 @@ function Menu({
     const isCollapsed = state === "collapsed"
     const { features } = useVersion()
 
-    // console.log(features);
-
-
     return (
         <div className={`overflow-x-hidden mb-3 py-2 ${isIconMode || isCollapsed ? "" : "px-2"}`}>
             {/* Dashboards Section */}
