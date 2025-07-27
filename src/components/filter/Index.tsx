@@ -11,13 +11,12 @@ import Date from "./Date"
 import CampingTrigar from "./CampingTrigar"
 import CampingChannel from "./CampingChannel"
 
-function Index() {
-
+function GraphFilter() {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Button variant="ghost">
-                    <PanelsTopLeft />
+                <Button variant="ghost" className="text-muted-foreground">
+                    <PanelsTopLeft  className="w-4 h-4"/>
                 </Button>
             </SheetTrigger>
             <SheetContent className="overflow-y-auto w-full max-h-screen bg-background border-l border-border/50 glass-effect">
@@ -32,7 +31,7 @@ function Index() {
     )
 }
 
-export default Index
+export default GraphFilter
 
 
 

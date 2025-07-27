@@ -1,24 +1,21 @@
-import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import AppSidebar from "@/components/dashboard/AppSidebar";
 import { Outlet } from "react-router-dom";
 
 
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import Header from "@/components/layout/Header";
+import NavHeader from "@/components/dashboard/Header";
 
 const DashboardContent = () => {
-  const [isThemePanelOpen, setIsThemePanelOpen] = useState(false);
   const { settings } = useTheme();
 
   return (
     <SidebarProvider>
       <AppSidebar
-        onThemeToggle={() => setIsThemePanelOpen(true)}
         sidebarMode={settings.sidebarMode}
       />
       <SidebarInset className={`h-screen`}>
-        <Header />
+        <NavHeader />
         <SidebarTrigger className={`absolute top-4 left-4 ${settings.sidebarMode === "icon" ? "hidden" : ""}`} />
         <main
           className={`flex-1 p-6 overflow-y-auto ${settings.contentLayout === "centered"

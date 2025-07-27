@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useVersion, Version } from "@/hooks/useVersion"
 import { APP_NAME } from '@/config/app'
 
-function Header({
+function NavLogo({
   versions,
   defaultVersion,
   isIconMode
@@ -69,4 +69,4 @@ function Header({
   )
 }
 
-export default Header
+export default NavLogo

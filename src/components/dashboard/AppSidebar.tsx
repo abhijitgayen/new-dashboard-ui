@@ -19,7 +19,7 @@ import {
   MonitorCog,
 } from "lucide-react";
 
-import Header from "./layout/sidebar/Header";
+import NavLogo from "./layout/sidebar/NavLogo";
 import Menu from "./layout/sidebar/Menu";
 import Footer from "./layout/sidebar/Footer";
 import { Sidebar, SidebarFooter, SidebarHeader, SidebarMenu } from "../ui/sidebar";
@@ -27,7 +27,6 @@ import { Version } from "@/hooks/useVersion";
 import { SidebarMode } from "@/contexts/ThemeConfig";
 
 interface SidebarProps {
-  onThemeToggle: () => void;
   sidebarMode: SidebarMode;
 }
 
@@ -54,7 +53,6 @@ export interface OtherItem {
 }
 
 const AppSidebar: React.FC<SidebarProps> = ({
-  onThemeToggle,
   sidebarMode,
   ...props
 }) => {
@@ -127,12 +125,11 @@ const AppSidebar: React.FC<SidebarProps> = ({
       className={`${isIconMode ? "w-16" : ""} h-screen border-r`}
     >
       <SidebarHeader className="bg-background">
-        <Header
+        <NavLogo
           isIconMode={isIconMode}
           versions={data.versions}
           defaultVersion={data.versions[0]} />
       </SidebarHeader>
-
       {/* Menu */}
       <SidebarMenu className="flex-1 overflow-y-auto border-t border-border -mt-4 bg-background">
         <Menu
