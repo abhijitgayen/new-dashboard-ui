@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Bell, LucideProps, MessagesSquare, Share, TriangleAlert, User, UserPlus, Wrench } from "lucide-react";
+import { Bell, LucideProps, MessagesSquare, UserCircle2 } from "lucide-react";
 import GraphFilter from "../filter/Index";
 
 interface HeaderContent {
@@ -11,9 +11,6 @@ interface HeaderContent {
 function NavHeader() {
     const headerContent: HeaderContent[] = [
         {
-            icon: UserPlus
-        },
-        {
             icon: Bell,
             notifiction: ""
         },
@@ -22,17 +19,7 @@ function NavHeader() {
             notifiction: ""
         },
         {
-            icon: Share
-        },
-        {
-            icon: TriangleAlert,
-            notifiction: ""
-        },
-        {
-            icon: Wrench,
-        },
-        {
-            icon: User
+            icon: UserCircle2
         }
     ]
 

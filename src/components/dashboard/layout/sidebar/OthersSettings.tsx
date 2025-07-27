@@ -62,7 +62,9 @@ function OthersSettings({ isCollapsed, isIconMode, otherItems }) {
                                                 <SidebarMenuSubItem key={subItem.label}>
                                                     <SidebarMenuSubButton asChild className={`flex items-center ${isIconMode ? "justify-center mx-2" : "justify-between"} rounded-lg cursor-pointer transition-colors text-muted-foreground hover:text-foreground hover:bg-accent/50`}>
                                                         <Link to={subItem.url}>
-                                                            <subItem.icon className="w-4 h-4" />
+                                                            <div>
+                                                                <subItem.icon className="w-4 h-4" />
+                                                            </div>
                                                             {!isIconMode && (
                                                                 <span className="text-sm font-medium w-full ml-1">{subItem.label}</span>
                                                             )}
