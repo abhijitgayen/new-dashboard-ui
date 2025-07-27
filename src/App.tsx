@@ -2,21 +2,24 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboardlayout from "./components/dashboard/layout/Dashboardlayout";
-import AnalyticsWidgets from "@/components/dashboard/AnalyticsWidgets";
-import NotFound from "./pages/NotFound";
-import Index from "./components/createDatasets/Index";
-import LoginPage from "./components/auth/LoginForm";
-import RegisterPage from "./components/auth/Register";
-import ForgotPassword from "./components/auth/ForgotPassword";
-import Settings from "./components/settings";
-import SettingsAccount from "./components/settings/account";
-import SettingsProfile from "./components/settings/profile";
+import { lazy, Suspense } from "react";
 import { ThemeProvider } from '@/contexts/ThemeContext'
-import SettingsAppearance from "./components/settings/appearance";
-import SettingsNotifications from "./components/settings/notifications";
-import SettingsDisplay from "./components/settings/display";
 import { VersionProvider } from "@/hooks/useVersion"
+
+// Dynamic imports for all route components
+const Dashboardlayout = lazy(() => import("./components/dashboard/layout/Dashboardlayout"));
+const AnalyticsWidgets = lazy(() => import("@/components/dashboard/AnalyticsWidgets"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Index = lazy(() => import("./components/createDatasets/Index"));
+const LoginPage = lazy(() => import("./components/auth/LoginForm"));
+const RegisterPage = lazy(() => import("./components/auth/Register"));
+const ForgotPassword = lazy(() => import("./components/auth/ForgotPassword"));
+const Settings = lazy(() => import("./components/settings"));
+const SettingsAccount = lazy(() => import("./components/settings/account"));
+const SettingsProfile = lazy(() => import("./components/settings/profile"));
+const SettingsAppearance = lazy(() => import("./components/settings/appearance"));
+const SettingsNotifications = lazy(() => import("./components/settings/notifications"));
+const SettingsDisplay = lazy(() => import("./components/settings/display"));
 
 const App = () => (
   <ThemeProvider>
@@ -30,24 +33,26 @@ const App = () => (
             v7_relativeSplatPath: true,
           }}
         >
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forget-password" element={<ForgotPassword />} />
-            <Route path="/" element={<Dashboardlayout />} >
-              <Route path="/settings" element={<Settings />} >
-                <Route index element={<SettingsProfile />} />
-                <Route path="account" element={<SettingsAccount />} />
-                <Route path="appearance" element={<SettingsAppearance />} />
-                <Route path="notifications" element={<SettingsNotifications />} />
-                <Route path="display" element={<SettingsDisplay />} />
-                {/* <Route path="thime" element={<Theme />} /> */}
+          <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/forget-password" element={<ForgotPassword />} />
+              <Route path="/" element={<Dashboardlayout />} >
+                <Route path="/settings" element={<Settings />} >
+                  <Route index element={<SettingsProfile />} />
+                  <Route path="account" element={<SettingsAccount />} />
+                  <Route path="appearance" element={<SettingsAppearance />} />
+                  <Route path="notifications" element={<SettingsNotifications />} />
+                  <Route path="display" element={<SettingsDisplay />} />
+                  {/* <Route path="thime" element={<Theme />} /> */}
+                </Route>
+                <Route index element={<AnalyticsWidgets />} />
+                <Route path="/create-datasets" element={<Index />} />
               </Route>
-              <Route index element={<AnalyticsWidgets />} />
-              <Route path="/create-datasets" element={<Index />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </VersionProvider>
