@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Bell, LucideProps, MessagesSquare, Share, TriangleAlert, User, UserPlus, Wrench } from "lucide-react";
-import Index from "../filter/Index";
+import GraphFilter from "../filter/Index";
 
 interface HeaderContent {
     icon?: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
@@ -8,7 +8,7 @@ interface HeaderContent {
     component?: React.ReactNode
 }
 
-function Header() {
+function NavHeader() {
     const headerContent: HeaderContent[] = [
         {
             icon: UserPlus
@@ -47,17 +47,17 @@ function Header() {
                             key={index}
                             variant="ghost"
                             size="icon"
-                            className="relative hover-accent"
+                            className="relative hover-accent text-muted-foreground"
                         >
                             {item.icon ? <item.icon className="w-4 h-4" /> : item.component}
                             {item.notifiction ? <span className="absolute -top-1 -right-1 w-3 h-3 accent-bg rounded-full text-xs accent-pulse">{item.notifiction}</span> : ""}
                         </Button>
                     ))
                 }
-                <Index />
+                <GraphFilter />
             </div>
         </header>
     )
 }
 
-export default Header
+export default NavHeader

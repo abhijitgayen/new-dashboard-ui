@@ -48,7 +48,7 @@ function OthersSettings({ isCollapsed, isIconMode, otherItems }) {
                                     <CollapsibleTrigger asChild>
                                         <SidebarMenuButton asChild className="h-full">
                                             <Link to={item.url}>
-                                                <item.icon className="w-4 h-4" />
+                                                <item.icon className="w-4 h-4 text-muted-foreground" />
                                                 {!isIconMode && (
                                                     <span className="text-sm font-medium w-full ml-1">{item.label}</span>
                                                 )}
