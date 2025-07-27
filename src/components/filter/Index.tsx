@@ -1,4 +1,3 @@
-import React from "react"
 import { Button } from "@/components/ui/button"
 import {
     Sheet,
@@ -21,7 +20,7 @@ function Index() {
                     <PanelsTopLeft />
                 </Button>
             </SheetTrigger>
-            <SheetContent className="overflow-y-auto max-h-screen p-6 bg-background border-l border-border/50 glass-effect">
+            <SheetContent className="overflow-y-auto w-full max-h-screen bg-background border-l border-border/50 glass-effect">
                 <SheetHeader className="mb-4 border-b">
                     <SheetTitle className="uppercase mb-2">quick filters</SheetTitle>
                 </SheetHeader>

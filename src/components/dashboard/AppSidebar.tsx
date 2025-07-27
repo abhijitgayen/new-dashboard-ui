@@ -5,19 +5,12 @@ import {
   DollarSign,
   Users,
   FolderOpen,
-  Bitcoin,
-  GraduationCap,
   Building2,
   Hotel,
-  MessageSquare,
-  Trello,
-  Bot,
   FileText,
   MessageCircle,
   Mail,
-  Crown,
   Palette,
-  Settings,
   LucideProps,
   Settings2Icon,
   UserRound,
@@ -25,24 +18,29 @@ import {
   Bell,
   MonitorCog,
 } from "lucide-react";
-import { SidebarMode } from "@/contexts/ThemeContext";
+
 import Header from "./layout/sidebar/Header";
 import Menu from "./layout/sidebar/Menu";
 import Footer from "./layout/sidebar/Footer";
 import { Sidebar, SidebarFooter, SidebarHeader, SidebarMenu } from "../ui/sidebar";
+import { Version } from "@/hooks/useVersion";
+import { SidebarMode } from "@/contexts/ThemeConfig";
 
 interface SidebarProps {
   onThemeToggle: () => void;
   sidebarMode: SidebarMode;
 }
 
+export type Badge = "Beta" | "Stable" | "Dev"
+
 export interface ItenInterface {
   icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
   url?: string;
   label?: string;
-  badge?: string;
+  badge?: Badge | string;
   title?: string;
   active?: boolean;
+  version?: Version
 }
 
 export interface OtherItem {
@@ -58,13 +56,14 @@ export interface OtherItem {
 const AppSidebar: React.FC<SidebarProps> = ({
   onThemeToggle,
   sidebarMode,
+  ...props
 }) => {
   const isIconMode = sidebarMode === "icon";
 
-  const menuItems = [
+  const menuItems: ItenInterface[] = [
     { icon: BarChart3, url: "/", label: "Website Analytics" },
-    { icon: ShoppingCart, url: "/test", label: "E-commerce" },
-    { icon: DollarSign, url: "login", label: "Sales" },
+    { icon: ShoppingCart, url: "#", label: "E-commerce" },
+    { icon: DollarSign, url: "#", label: "Sales" },
     { icon: FolderOpen, url: "#", label: "Project Management" },
     { icon: FileText, url: "/create-datasets", label: "Create Datasets" },
   ]
@@ -108,33 +107,45 @@ const AppSidebar: React.FC<SidebarProps> = ({
     },
   ]
 
-  const appItems = [
-    { icon: Trello, url: "#", label: "Kanban", badge: "Coming" },
-    { icon: Bot, url: "#", label: "AI Chat", badge: "New" },
-    { icon: FileText, url: "#", label: "Notes" },
-    { icon: MessageCircle, url: "#", label: "Chats", badge: "4" },
-    { icon: Mail, url: "#", label: "Mail", badge: "Coming" },
+  const data = {
+    versions: ["Stable", "Beta", "Dev"]
+  }
+
+  const appItems: ItenInterface[] = [
+    { icon: MessageCircle, url: "#", label: "Chats", badge: "4", version: "Stable" },
+    { icon: FileText, url: "#", label: "Notes", version: "Stable" },
+    { icon: Mail, url: "#", label: "Mail", version: "Stable" },
+    { icon: Building2, url: "#", label: "Company", badge: "Beta" as Badge, version: "Beta" },
+    { icon: Hotel, url: "#", label: "Hotel", badge: "Beta" as Badge, version: "Beta" },
+    { icon: Users, url: "#", label: "Users", badge: "Beta" as Badge, version: "Beta" },
   ]
 
   return (
     <Sidebar
+      {...props}
       collapsible={isIconMode ? "none" : "icon"}
       className={`${isIconMode ? "w-16" : ""} h-screen border-r`}
     >
       <SidebarHeader className="bg-background">
-        <Header isIconMode={isIconMode} />
+        <Header
+          isIconMode={isIconMode}
+          versions={data.versions}
+          defaultVersion={data.versions[0]} />
       </SidebarHeader>
 
       {/* Menu */}
-      <SidebarMenu className="flex-1 overflow-y-auto border-b border-t border-border -mt-4 bg-background">
-        <Menu appItems={appItems} isIconMode={isIconMode} menuItems={menuItems} otherItems={otherItems} />
+      <SidebarMenu className="flex-1 overflow-y-auto border-t border-border -mt-4 bg-background">
+        <Menu
+          appItems={appItems}
+          isIconMode={isIconMode}
+          menuItems={menuItems}
+          otherItems={otherItems}
+        />
       </SidebarMenu>
 
-      {/* Footer */}
-      <SidebarFooter className="bg-background">
+      <SidebarFooter className="bg-background border-t border-border">
         <Footer isIconMode={isIconMode} />
       </SidebarFooter>
-
     </Sidebar>
   );
 };

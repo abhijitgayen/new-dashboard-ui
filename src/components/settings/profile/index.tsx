@@ -8,7 +8,6 @@ export default function SettingsProfile() {
       desc='This is how others will see you on the site.'
     >
       <ProfileForm />
-      {/* <h1>Profile</h1> */}
     </ContentSection>
   )
 }

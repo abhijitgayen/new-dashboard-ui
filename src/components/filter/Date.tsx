@@ -19,37 +19,39 @@ function Date() {
         isOpen(prev => !prev);
     };
     return (
-        <div className="w-80 h-auto p-3 border ml-1.5 mb-4">
-            <div
-                onClick={() => handleOnClick()}
-                className="w-full flex justify-between items-center cursor-pointer">
-                <h2>Date</h2>
-                <ChevronDown className={`${open ? "" : "rotate-180"}`} />
-            </div>
-            <div className={`${open ? "block mt-3" : "hidden"}`}>
-                <Input />
-                <Popover>
-                    <PopoverTrigger asChild>
-                        <Button
-                            variant={"outline"}
-                            className={cn(
-                                "w-full justify-start text-left font-normal mt-2",
-                                !date && "text-muted-foreground"
-                            )}
-                        >
-                            <CalendarIcon />
-                            {date ? format(date, "PPP") : <span>Pick a date</span>}
-                        </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                            mode="single"
-                            selected={date}
-                            onSelect={setDate}
-                            initialFocus
-                        />
-                    </PopoverContent>
-                </Popover>
+        <div className="w-full h-auto border mb-4">
+            <div className='p-3'>
+                <div
+                    onClick={() => handleOnClick()}
+                    className="w-full flex justify-between items-center cursor-pointer">
+                    <h2>Date</h2>
+                    <ChevronDown className={`${open ? "" : "rotate-180"}`} />
+                </div>
+                <div className={`${open ? "block mt-3" : "hidden"}`}>
+                    <Input />
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Button
+                                variant={"outline"}
+                                className={cn(
+                                    "w-full justify-start text-left font-normal mt-2",
+                                    !date && "text-muted-foreground"
+                                )}
+                            >
+                                <CalendarIcon />
+                                {date ? format(date, "PPP") : <span>Pick a date</span>}
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                            <Calendar
+                                mode="single"
+                                selected={date}
+                                onSelect={setDate}
+                                initialFocus
+                            />
+                        </PopoverContent>
+                    </Popover>
+                </div>
             </div>
         </div>
     )

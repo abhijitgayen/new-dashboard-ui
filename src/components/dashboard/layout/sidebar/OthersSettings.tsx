@@ -8,8 +8,8 @@ function SidebarMenuCollapsedDropdown({ item }) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <SidebarMenuButton className="flex items-center justify-center w-full h-10">
-                    <item.icon className="w-5 h-5" />
+                <SidebarMenuButton asChild className="">
+                    <item.icon className="w-4 h-4" />
                 </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" align="start" className="min-w-[180px]">

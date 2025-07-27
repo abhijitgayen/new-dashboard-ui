@@ -24,20 +24,20 @@ function Header() {
         {
             icon: Share
         },
-        // {
-        //     icon: TriangleAlert,
-        //     notifiction: ""
-        // },
-        // {
-        //     icon: Wrench,
-        // },
-        // {
-        //     icon: User
-        // }
+        {
+            icon: TriangleAlert,
+            notifiction: ""
+        },
+        {
+            icon: Wrench,
+        },
+        {
+            icon: User
+        }
     ]
 
     return (
-        <header className="h-14 border-b border-border flex items-center justify-between px-6 relative">
+        <header className="h-14 border-b border-border flex items-center justify-between px-3.5 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-color/5 to-transparent opacity-50"></div>
             <div></div>
             <div className="flex items-center gap-2 relative z-10">
