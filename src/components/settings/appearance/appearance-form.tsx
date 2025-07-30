@@ -25,6 +25,7 @@ import {
   fontFamilyMaps,
   accentColors,
   radiusValues,
+  scaleValues,
 } from "@/contexts/ThemeConfig"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
@@ -35,19 +36,19 @@ export const appearanceFormSchema = z.object({
   contentLayout: z.enum(["full", "centered"] as [ContentLayout, ...ContentLayout[]], {
     required_error: "Please select a content layout.",
   }),
-  fontFamily: z.enum(["sans", "mono", "display"] as [FontFamily, ...FontFamily[]], {
+  fontFamily: z.enum(fontFamilyMaps.map(v => v.id) as [FontFamily, ...FontFamily[]], {
     required_error: "Please select a font family.",
   }),
-  radius: z.enum(["none", "sm", "md", "lg", "xl"] as [Radius, ...Radius[]], {
+  radius: z.enum(radiusValues.map(v => v.id) as [Radius, ...Radius[]], {
     required_error: "Please select a radius.",
   }),
   sidebarMode: z.enum(["default", "icon"] as [SidebarMode, ...SidebarMode[]], {
     required_error: "Please select a sidebar mode.",
   }),
-  scale: z.enum(["xs", "sm", "lg"] as [Scale, ...Scale[]], {
+  scale: z.enum(scaleValues.map(v => v.id) as [Scale, ...Scale[]], {
     required_error: "Please select a scale.",
   }),
-  accentColor: z.enum(["emerald", "violet", "rose", "amber", "sky"] as [AccentColorName, ...AccentColorName[]], {
+  accentColor: z.enum(accentColors.map(v => v.id) as [AccentColorName, ...AccentColorName[]], {
     required_error: "Please select an accent color.",
   }),
 })

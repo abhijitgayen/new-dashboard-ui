@@ -1,8 +1,8 @@
 export type ColorMode = "light" | "dark" | "dark-blue";
 export type ContentLayout = "full" | "centered";
-export type FontFamily = "sans" | "mono" | "display";
-export type Radius = "none" | "sm" | "md" | "lg" | "xl";
 export type SidebarMode = "default" | "icon";
+export type FontFamily = "sans" | "mono" | "display" | "roboto" | "lato" | "montserrat" | "poppins" | "open-sans" | "raleway" | "nunito" | "merriweather" | "oswald" | "ubuntu";
+export type Radius = "none" | "sm" | "md" | "lg" | "xl";
 export type Scale = "xs" | "sm" | "lg";
 export type AccentColorName = "emerald" | "violet" | "rose" | "amber" | "sky";
 
@@ -53,6 +53,9 @@ export const fontFamilyMaps: FontFamilyMap[] = [
   { id: "sans", value: "Inter, system-ui, sans-serif", label: "Sans" },
   { id: "mono", value: "JetBrains Mono, monospace", label: "Mono" },
   { id: "display", value: "Cal Sans, system-ui, sans-serif", label: "Display" },
+  { id: "roboto", value: "Roboto, system-ui, sans-serif", label: "Roboto" },
+  { id: "nunito", value: "Nunito, system-ui, sans-serif", label: "Nunito" },
+  { id: "ubuntu", value: "Ubuntu, system-ui, sans-serif", label: "Ubuntu" },
 ]
 
 export interface ScaleValue {

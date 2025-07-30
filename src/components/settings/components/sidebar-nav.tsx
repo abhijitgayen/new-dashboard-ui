@@ -72,9 +72,9 @@ export default function SidebarNav({
               className={cn(
                 buttonVariants({ variant: 'ghost' }),
                 pathname === item.href
-                  ? 'bg-muted hover:bg-muted'
-                  : 'hover:bg-transparent hover:underline',
-                'justify-start'
+                  ? 'bg-muted'
+                  : 'hover:bg-transparent text-foreground',
+                'justify-start text-muted-foreground'
               )}
             >
               <span className='mr-2'>{item.icon}</span>
