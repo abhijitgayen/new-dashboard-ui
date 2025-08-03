@@ -80,7 +80,7 @@ const UserProfileDropdown = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="p-0 mr-4 mt-2 animate-fade-in border-1 shadow-2xl bg-card/80"
+        className="p-0 mr-4 mt-2 animate-fade-in border-1 shadow-2xl bg-card"
         align="end"
       >
         {/* Header */}
