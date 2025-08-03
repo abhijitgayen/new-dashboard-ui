@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Bell, LucideProps, MessagesSquare, UserCircle2 } from "lucide-react";
 import GraphFilter from "../filter/Index";
+import UserProfileDropdown from "./UserProfileDropdown";
 
 interface HeaderContent {
     icon?: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
@@ -27,6 +28,7 @@ function NavHeader() {
         <header className="h-14 border-b border-border flex items-center justify-between px-3.5 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-color/5 to-transparent opacity-50"></div>
             <div></div>
+
             <div className="flex items-center gap-2 relative z-10">
                 {
                     headerContent.map((item, index) => (
@@ -41,7 +43,8 @@ function NavHeader() {
                         </Button>
                     ))
                 }
-                <GraphFilter />
+                {/* <GraphFilter /> */}
+                <UserProfileDropdown />
             </div>
         </header>
     )
