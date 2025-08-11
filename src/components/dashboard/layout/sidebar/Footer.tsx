@@ -9,7 +9,7 @@ function Footer({ isIconMode }: { isIconMode: boolean }) {
     return (
         <Link to={SETTING_PAGE} className="flex items-center justify-center">
             <SidebarMenuButton className={` ${!isIconMode ? 'w-full' : 'w-8 h-8'}  flex items-center justify-center`} variant={(isCollapsed || isIconMode) ? "default" : "outline"}>
-                <Palette className="w-4 h-4" />
+                <Palette className={`w-4 h-4 ${isIconMode ? "" : "ml-1.5"}`} />
                 {!isIconMode && (
                     <div className={`truncate`}>
                         <div className="translate-middle duration-1000">Theme Settings</div>
